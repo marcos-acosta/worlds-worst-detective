@@ -1,0 +1,5 @@
+.codeBlock {
+  font-family: monospace;
+  background-color: rgb(237, 237, 237);
+  white-space: pre-wrap;
+}

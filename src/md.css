@@ -1,0 +1,11 @@
+.md-bold {
+  font-weight: bold;
+}
+
+.md-italic {
+  font-style: italic;
+}
+
+.md-code {
+  font-family: monospace;
+}
