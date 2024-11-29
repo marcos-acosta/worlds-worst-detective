@@ -6,7 +6,7 @@ export interface Matcher {
 }
 
 export interface Match {
-  matcherName: string;
+  matcherName?: string;
   startInclusive: number;
   endExclusive: number;
   matchedText: string;
@@ -100,13 +100,13 @@ const findMatchInNestedStructure = (
   idToFind: string,
   matches: Match[]
 ): Match | undefined => {
-  for (let match of matches) {
-    if (match.id === idToFind) {
-      return match;
+  for (let i = 0; i < matches.length; i++) {
+    if (matches[i].id === idToFind) {
+      return matches[i];
     }
     const recursiveResult = findMatchInNestedStructure(
       idToFind,
-      match.children
+      matches[i].children
     );
     if (recursiveResult) {
       return recursiveResult;
@@ -115,8 +115,98 @@ const findMatchInNestedStructure = (
   return undefined;
 };
 
-export const decompose = (s: string, matchers: Matcher[]) => {
-  let allMatches = [] as Match[];
+const recursivelyClean = (matches: Match[]): Match[] => {
+  if (matches.length === 0) {
+    return [];
+  }
+  return matches
+    .map((match) => ({
+      ...match,
+      children: recursivelyClean(match.children).map((child) =>
+        makeMatchRelativeToDependency(child, match)
+      ),
+    }))
+    .sort((matchA, matchB) => matchA.startInclusive - matchB.startInclusive);
+};
+
+const makeMatchRelativeToDependency = (
+  match: Match,
+  dependency: Match
+): Match => ({
+  ...match,
+  startInclusive: match.startInclusive - dependency.startInclusive,
+  endExclusive: match.endExclusive - dependency.startInclusive,
+});
+
+const fillUnmatched = (matches: Match[]): Match[] => {
+  return matches.map((match) => {
+    let newChildren = [] as Match[];
+    let lastCoveredIndexExclusive = 0;
+    const children = fillUnmatched(match.children);
+    for (let i = 0; i < children.length; ++i) {
+      const child = children[i];
+      if (child.startInclusive > lastCoveredIndexExclusive) {
+        newChildren = [
+          ...newChildren,
+          {
+            startInclusive: lastCoveredIndexExclusive,
+            endExclusive: child.startInclusive,
+            id: uuidv4(),
+            matchedText: match.matchedText.slice(
+              lastCoveredIndexExclusive,
+              child.startInclusive
+            ),
+            matchAfter: [match.id],
+            children: [],
+          },
+          child,
+        ];
+      }
+      lastCoveredIndexExclusive = child.endExclusive;
+    }
+    if (children.length > 0) {
+      const lastChild = children[children.length - 1];
+      if (lastChild.endExclusive < match.matchedText.length) {
+        newChildren = [
+          ...newChildren,
+          {
+            startInclusive: lastChild.endExclusive,
+            endExclusive: match.matchedText.length,
+            id: uuidv4(),
+            matchedText: match.matchedText.slice(
+              lastChild.endExclusive,
+              match.matchedText.length
+            ),
+            matchAfter: [match.id],
+            children: [],
+          },
+        ];
+      }
+    }
+    return { ...match, children: newChildren };
+  });
+};
+
+export const decompose = (
+  s: string,
+  matchers: Matcher[],
+  wrapInMatch?: boolean,
+  fillUnmatchedText?: boolean
+) => {
+  let allMatches = (
+    wrapInMatch
+      ? [
+          {
+            startInclusive: 0,
+            endExclusive: s.length,
+            matchedText: s,
+            id: uuidv4(),
+            matchAfter: [],
+            children: [],
+          },
+        ]
+      : []
+  ) as Match[];
   matchers.forEach((matcher) => {
     allMatches = [...allMatches, ...getAllMatches(s, matcher)];
   });
@@ -127,16 +217,18 @@ export const decompose = (s: string, matchers: Matcher[]) => {
   let finalMatches = Object.values(
     cleanUpDependencies(matchesWithDependencies)
   );
-  // Make a copy to iterate over.
-  structuredClone(finalMatches).forEach((match) => {
+  for (let i = 0; i < finalMatches.length; i++) {
+    const match = finalMatches[i];
     const dependency = findMatchInNestedStructure(
       match.matchAfter[0],
       finalMatches
     );
     if (dependency) {
       dependency.children = [...dependency.children, match];
-      finalMatches = finalMatches.filter((m) => m.id !== match.id);
     }
-  });
-  return finalMatches;
+  }
+  const topLevelMatches = recursivelyClean(
+    finalMatches.filter((match) => match.matchAfter.length === 0)
+  );
+  return fillUnmatchedText ? fillUnmatched(topLevelMatches) : topLevelMatches;
 };

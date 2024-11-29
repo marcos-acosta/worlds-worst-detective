@@ -1,6 +1,6 @@
 import { regex } from "regex";
 import { objectsEqual, split } from "./util";
-import { decompose, Matcher } from "./priority-split";
+import { decompose, Match, Matcher } from "./priority-split";
 
 export interface ImageBody {
   alt: string;
@@ -113,7 +113,7 @@ const detectFormattingInSpan = (
   }
 };
 
-const applyStylesToSpan = (span: Span, filters: ((s: Span) => Span)[]) => {
+const applyStylesToSpanOld = (span: Span, filters: ((s: Span) => Span)[]) => {
   let newSpan = span;
   for (let styleFilter of filters) {
     newSpan = styleFilter(newSpan);
@@ -127,13 +127,80 @@ const FILTERS = [
   (s: Span) => detectFormattingInSpan(s, "`", { code: true }),
 ];
 
+const enum ElementType {
+  BOLD = "BOLD",
+  ITALIC = "ITALIC",
+  CODE = "CODE",
+}
+
+const MATCHERS: Matcher[] = [
+  {
+    name: ElementType.BOLD,
+    regex: regex`\*\*(?<content>.+?)\*\*`,
+  },
+  {
+    name: ElementType.ITALIC,
+    regex: regex`_(?<content>.+?)_`,
+  },
+];
+const MATCHERS_BY_NAME = Object.fromEntries(
+  MATCHERS.map((matcher) => [matcher.name, matcher])
+);
+
+const applyElementType = (span: Span, type?: string): Span => {
+  switch (type) {
+    case ElementType.BOLD:
+      return { ...span, bold: true };
+    case ElementType.ITALIC:
+      return { ...span, italic: true };
+    case ElementType.CODE:
+      return { ...span, code: true };
+    default:
+      return span;
+  }
+};
+
+const convertMatchToSpan = (match: Match): Span => {
+  const relevantMatcher = match.matcherName
+    ? MATCHERS_BY_NAME[match.matcherName]
+    : undefined;
+  const regexMatch =
+    relevantMatcher && match.matchedText.match(relevantMatcher.regex);
+  const span = applyElementType(
+    {
+      content: regexMatch?.groups
+        ? regexMatch.groups["content"]
+        : match.matchedText,
+    },
+    match.matcherName
+  );
+  // Fill in missing spots.
+  // Add children.
+  return span;
+};
+
+const applyStylesToSpan = (span: Span, matchers: Matcher[]): Span => {
+  // Based on call order, this span should have text content.
+  if (Array.isArray(span.content)) {
+    return span;
+  }
+  const elementOrder = decompose(span.content, matchers);
+  if (elementOrder.length !== 1) {
+    return span;
+  }
+
+  return convertMatchToSpan(elementOrder[0]);
+};
+
 /**
  * TODO
- * - hierarchical
- *   - link
- *   - definition
- *   - footnote
- *   - (digressions)
+ * - bold
+ * - italic
+ * - code
+ * - link
+ * - definition
+ * - footnote
+ * - (digressions)
  * - images
  */
 
@@ -147,7 +214,7 @@ const splitTextIntoSections = (lines: string[]): Section[] => {
   if (headers.length === 0 || headers.length + 1 !== sectionLines.length) {
     return sections;
   }
-  // We want everything to belong to a header.
+  // We want everything to belong to a header, so no leading content.
   const sectionLinesAfterFirstHeader = sectionLines.slice(1);
   for (let i = 0; i < headers.length; i++) {
     const headerMatch = matchWithHeaderPattern(headers[i]);
@@ -163,7 +230,8 @@ const splitTextIntoSections = (lines: string[]): Section[] => {
           .map((line_) => processCodeBlock(line_))
           .map((paragraph) => ({
             ...paragraph,
-            span: simplify(applyStylesToSpan(paragraph.span, FILTERS)),
+            // span: simplify(applyStylesToSpan(paragraph.span, FILTERS)),
+            span: simplify(applyStylesToSpan(paragraph.span, MATCHERS)),
           })),
         subsections: [],
       },
@@ -225,17 +293,19 @@ export const convertMarcdownToJsx = (md: string) => {
   const sections = nestSections(splitTextIntoSections(splitByNewlines));
   // console.log(sections);
 
-  const matchers: Matcher[] = [
-    { name: "matcher 1", regex: regex`\*\*.+?\*\*` },
-    { name: "matcher 2", regex: regex`_.+?_` },
-    { name: "matcher 3", regex: regex`,.+?,` },
-  ];
-  console.log(
-    decompose(
-      "something _really **fun**_ _is_ **happening _ri,g,ht_ _now_** _now_",
-      matchers
-    )
-  );
+  // const matchers: Matcher[] = [
+  //   { name: "matcher 1", regex: regex`\*\*.+?\*\*` },
+  //   { name: "matcher 2", regex: regex`_.+?_` },
+  //   { name: "matcher 3", regex: regex`,.+?,` },
+  // ];
+  // console.log(
+  //   decompose(
+  //     "something _really **fun**_ _is_ **happening _ri,g,ht_ _now_** _now_",
+  //     matchers,
+  //     true,
+  //     true
+  //   )
+  // );
 
   return sections;
 };
