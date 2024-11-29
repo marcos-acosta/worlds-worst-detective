@@ -83,12 +83,12 @@ const cleanUpDependencies = (matches: {
           match.matchAfter.length === 0
             ? []
             : [
-                match.matchAfter.reduce((maxDependents, currentMatch) =>
-                  maxDependents.length === 0 ||
-                  matches[currentMatch].matchAfter.length >
-                    matches[maxDependents].matchAfter.length
-                    ? currentMatch
-                    : maxDependents
+                match.matchAfter.reduce(
+                  (matchWithMostDependencies, currentMatch) =>
+                    matches[currentMatch].matchAfter.length >
+                    matches[matchWithMostDependencies].matchAfter.length
+                      ? currentMatch
+                      : matchWithMostDependencies
                 ),
               ],
       },
@@ -96,13 +96,20 @@ const cleanUpDependencies = (matches: {
   );
 };
 
-const findMatchInNestedStructure = (idToFind: string, matches: Match[]) => {
+const findMatchInNestedStructure = (
+  idToFind: string,
+  matches: Match[]
+): Match | undefined => {
   for (let match of matches) {
     if (match.id === idToFind) {
       return match;
     }
-    if (findMatchInNestedStructure(idToFind, match.children)) {
-      return match;
+    const recursiveResult = findMatchInNestedStructure(
+      idToFind,
+      match.children
+    );
+    if (recursiveResult) {
+      return recursiveResult;
     }
   }
   return undefined;

@@ -228,10 +228,11 @@ export const convertMarcdownToJsx = (md: string) => {
   const matchers: Matcher[] = [
     { name: "matcher 1", regex: regex`\*\*.+?\*\*` },
     { name: "matcher 2", regex: regex`_.+?_` },
+    { name: "matcher 3", regex: regex`,.+?,` },
   ];
   console.log(
     decompose(
-      "something _really **fun**_ _is_ **happening _right_ _now_** _now_",
+      "something _really **fun**_ _is_ **happening _ri,g,ht_ _now_** _now_",
       matchers
     )
   );
