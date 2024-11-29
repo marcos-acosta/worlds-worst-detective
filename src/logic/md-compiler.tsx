@@ -1,5 +1,6 @@
 import { regex } from "regex";
 import { objectsEqual, split } from "./util";
+import { decompose, Matcher } from "./priority-split";
 
 export interface ImageBody {
   alt: string;
@@ -13,6 +14,7 @@ export interface Span {
   code?: boolean;
   footnote?: string;
   definition?: string;
+  href?: string;
 }
 
 export enum ParagraphType {
@@ -38,8 +40,8 @@ export function isImageBody(b: ImageBody | Paragraph): b is ImageBody {
 }
 
 const areSpansEqualBesidesContent = (spanA: Span, spanB: Span) => {
-  const spanA_ = { ...spanA, content: "" };
-  const spanB_ = { ...spanB, content: "" };
+  const spanA_: Span = { ...structuredClone(spanA), content: "" };
+  const spanB_: Span = { ...structuredClone(spanB), content: "" };
   return objectsEqual(spanA_, spanB_);
 };
 
@@ -67,7 +69,7 @@ const detectFormatting = (
   let spans = [] as Span[];
   while (true) {
     const match = remainingText.match(
-      regex`.*(?<fullMatch>${wrapper}(?<internalContent>.*?)${wrapper}).*`
+      regex`.*?(?<fullMatch>${wrapper}(?<internalContent>.*?)${wrapper}).*`
     );
     if (match?.groups) {
       const internalContent = match.groups["internalContent"];
@@ -128,6 +130,7 @@ const FILTERS = [
 /**
  * TODO
  * - hierarchical
+ *   - link
  *   - definition
  *   - footnote
  *   - (digressions)
@@ -220,6 +223,18 @@ const processCodeBlock = (bodyText: string): Paragraph => {
 export const convertMarcdownToJsx = (md: string) => {
   const splitByNewlines = md.split("\n\n");
   const sections = nestSections(splitTextIntoSections(splitByNewlines));
-  console.log(sections);
+  // console.log(sections);
+
+  const matchers: Matcher[] = [
+    { name: "matcher 1", regex: regex`\*\*.+?\*\*` },
+    { name: "matcher 2", regex: regex`_.+?_` },
+  ];
+  console.log(
+    decompose(
+      "something _really **fun**_ _is_ **happening _right_ _now_** _now_",
+      matchers
+    )
+  );
+
   return sections;
 };
