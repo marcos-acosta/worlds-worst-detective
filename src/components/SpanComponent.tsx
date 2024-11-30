@@ -43,9 +43,6 @@ export default function SpanComponent(props: SpanComponentProps) {
   let mainContent = createSpans(partition.mainText);
   const auxContent = partition.auxText && createSpans(partition.auxText);
   const canShowAuxText = showAuxText && auxContent;
-  if (partition.partitionType === PartitionType.IMAGE) {
-    console.log(partition);
-  }
   if (
     partition.partitionType === PartitionType.LINK &&
     partition.auxPlainText

@@ -23,7 +23,7 @@ export interface Section {
 const splitTextIntoSections = (lines: string[]): Section[] => {
   let sections = [] as Section[];
   const matchWithHeaderPattern = (s: string) =>
-    s.match(regex`(?<headingNumber>\#+)\s(?<title>.+)`);
+    s.match(regex`(?<headingNumber>\#+)(?<digression>\s\(d\))?\s(?<title>.+)`);
   const [sectionLines, headers] = split(lines, (t: string) =>
     Boolean(matchWithHeaderPattern(t))
   );
@@ -45,6 +45,7 @@ const splitTextIntoSections = (lines: string[]): Section[] => {
         bodies: sectionLinesAfterFirstHeader[i].map((line_) =>
           processCodeBlock(line_)
         ),
+        isDigression: Boolean(headerMatch.groups["digression"]),
         subsections: [],
       },
     ];

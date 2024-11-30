@@ -6,6 +6,10 @@ Stuff
 
 Other stuff, this is **bold**. {This is _italicized_}(Footnote: it actually is italicized.).
 
+### (d) Another header 3
+
+Writing stuff in here, here's another {footnote}(yep, isn't that **cool**?) and a %definition%(cats are _cool_.).
+
 ### Header 3
 
 This is a [link](https://google.com). This is **bold and _italic_**. This is _italic and **bold**_. I'd like to %define%(a definition) this term.

@@ -195,13 +195,12 @@ const enrichPartition = (
     return newPartition;
   }
   const subPartitions = getSortedTopLevelPartitions(mainText, matchers);
-  if (subPartitions.length === 0) {
-    return newPartition;
+  if (subPartitions.length > 0) {
+    const enrichedSubPartitions = subPartitions.map((subPartition) =>
+      enrichPartition(subPartition, matchers)
+    );
+    newPartition.mainText = enrichedSubPartitions;
   }
-  const enrichedSubPartitions = subPartitions.map((subPartition) =>
-    enrichPartition(subPartition, matchers)
-  );
-  newPartition.mainText = enrichedSubPartitions;
   if (partition.auxText && !Array.isArray(partition.auxText)) {
     const auxSubPartitions = getSortedTopLevelPartitions(
       partition.auxText,
