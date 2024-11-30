@@ -1,5 +1,4 @@
-import { Section as SectionInterface, isImageBody } from "../logic/md-compiler";
-import ImageComponent from "./ImageComponent";
+import { Section as SectionInterface } from "../logic/md-compiler";
 import ParagraphComponent from "./ParagraphComponent";
 import styles from "./Section.module.css";
 
@@ -32,13 +31,9 @@ export default function Section(props: SectionProps) {
         {getTitle(section.title, section.level)}
       </div>
       <div className={styles.sectionIntro}>
-        {section.bodies.map((body, i) =>
-          isImageBody(body) ? (
-            <ImageComponent image={body} key={i} />
-          ) : (
-            <ParagraphComponent paragraph={body} key={i} />
-          )
-        )}
+        {section.bodies.map((body, i) => (
+          <ParagraphComponent paragraph={body} key={i} />
+        ))}
       </div>
       <div className={styles.subsections}>
         {section.subsections.map((subsection, i) => (

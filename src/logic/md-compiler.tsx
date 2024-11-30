@@ -2,31 +2,22 @@ import { regex } from "regex";
 import { split } from "./util";
 import { Partition, partitionStringWithMatchers } from "./partition";
 
-export interface ImageBody {
-  alt: string;
-  src: string;
-}
-
 export enum ParagraphType {
   REGULAR,
   CODE_BLOCK,
 }
 
 export interface Paragraph {
-  paragraphType: ParagraphType;
   partitions: Partition[];
+  paragraphType: ParagraphType;
 }
 
 export interface Section {
   title: string;
   level: number;
   isDigression?: boolean;
-  bodies: (Paragraph | ImageBody)[];
+  bodies: Paragraph[];
   subsections: Section[];
-}
-
-export function isImageBody(b: ImageBody | Paragraph): b is ImageBody {
-  return (b as ImageBody).src !== undefined;
 }
 
 const splitTextIntoSections = (lines: string[]): Section[] => {
