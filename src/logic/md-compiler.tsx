@@ -1,20 +1,10 @@
 import { regex } from "regex";
-import { objectsEqual, split } from "./util";
-import { decompose, Match, Matcher } from "./priority-split";
+import { split } from "./util";
+import { Partition, partitionStringWithMatchers } from "./partition";
 
 export interface ImageBody {
   alt: string;
   src: string;
-}
-
-export interface Span {
-  content: string | Span[];
-  bold?: boolean;
-  italic?: boolean;
-  code?: boolean;
-  footnote?: string;
-  definition?: string;
-  href?: string;
 }
 
 export enum ParagraphType {
@@ -24,7 +14,7 @@ export enum ParagraphType {
 
 export interface Paragraph {
   paragraphType: ParagraphType;
-  span: Span;
+  partitions: Partition[];
 }
 
 export interface Section {
@@ -38,171 +28,6 @@ export interface Section {
 export function isImageBody(b: ImageBody | Paragraph): b is ImageBody {
   return (b as ImageBody).src !== undefined;
 }
-
-const areSpansEqualBesidesContent = (spanA: Span, spanB: Span) => {
-  const spanA_: Span = { ...structuredClone(spanA), content: "" };
-  const spanB_: Span = { ...structuredClone(spanB), content: "" };
-  return objectsEqual(spanA_, spanB_);
-};
-
-const simplify = (span: Span): Span => {
-  if (Array.isArray(span.content)) {
-    if (
-      span.content.length === 1 &&
-      areSpansEqualBesidesContent(span, span.content[0])
-    ) {
-      return simplify(span.content[0]);
-    } else {
-      return { ...span, content: span.content.map((c) => simplify(c)) };
-    }
-  } else {
-    return span;
-  }
-};
-
-const detectFormatting = (
-  text: string,
-  wrapper: string,
-  spanProperty: Partial<Span>
-) => {
-  let remainingText = text;
-  let spans = [] as Span[];
-  while (true) {
-    const match = remainingText.match(
-      regex`.*?(?<fullMatch>${wrapper}(?<internalContent>.*?)${wrapper}).*`
-    );
-    if (match?.groups) {
-      const internalContent = match.groups["internalContent"];
-      const fullMatch = match.groups["fullMatch"];
-      const matchIndex = remainingText.indexOf(fullMatch);
-      const [pre, post] = [
-        remainingText.slice(0, matchIndex),
-        remainingText.slice(matchIndex + fullMatch.length),
-      ];
-      spans = [
-        ...spans,
-        { content: pre },
-        { content: internalContent, ...spanProperty },
-      ].filter((s) => s.content.length > 0);
-      remainingText = post;
-    } else {
-      spans = [...spans, { content: remainingText }];
-      break;
-    }
-  }
-  return spans;
-};
-
-const detectFormattingInSpan = (
-  span: Span,
-  wrapper: string,
-  spanProperty: Partial<Span>
-): Span => {
-  if (Array.isArray(span.content)) {
-    return {
-      ...span,
-      content: span.content.map((span_) =>
-        detectFormattingInSpan(span_, wrapper, spanProperty)
-      ),
-    };
-  } else {
-    return {
-      ...span,
-      content: detectFormatting(span.content, wrapper, spanProperty),
-    };
-  }
-};
-
-const applyStylesToSpanOld = (span: Span, filters: ((s: Span) => Span)[]) => {
-  let newSpan = span;
-  for (let styleFilter of filters) {
-    newSpan = styleFilter(newSpan);
-  }
-  return newSpan;
-};
-
-const FILTERS = [
-  (s: Span) => detectFormattingInSpan(s, "**", { bold: true }),
-  (s: Span) => detectFormattingInSpan(s, "_", { italic: true }),
-  (s: Span) => detectFormattingInSpan(s, "`", { code: true }),
-];
-
-const enum ElementType {
-  BOLD = "BOLD",
-  ITALIC = "ITALIC",
-  CODE = "CODE",
-}
-
-const MATCHERS: Matcher[] = [
-  {
-    name: ElementType.BOLD,
-    regex: regex`\*\*(?<content>.+?)\*\*`,
-  },
-  {
-    name: ElementType.ITALIC,
-    regex: regex`_(?<content>.+?)_`,
-  },
-];
-const MATCHERS_BY_NAME = Object.fromEntries(
-  MATCHERS.map((matcher) => [matcher.name, matcher])
-);
-
-const applyElementType = (span: Span, type?: string): Span => {
-  switch (type) {
-    case ElementType.BOLD:
-      return { ...span, bold: true };
-    case ElementType.ITALIC:
-      return { ...span, italic: true };
-    case ElementType.CODE:
-      return { ...span, code: true };
-    default:
-      return span;
-  }
-};
-
-const convertMatchToSpan = (match: Match): Span => {
-  const relevantMatcher = match.matcherName
-    ? MATCHERS_BY_NAME[match.matcherName]
-    : undefined;
-  const regexMatch =
-    relevantMatcher && match.matchedText.match(relevantMatcher.regex);
-  const span = applyElementType(
-    {
-      content: regexMatch?.groups
-        ? regexMatch.groups["content"]
-        : match.matchedText,
-    },
-    match.matcherName
-  );
-  // Fill in missing spots.
-  // Add children.
-  return span;
-};
-
-const applyStylesToSpan = (span: Span, matchers: Matcher[]): Span => {
-  // Based on call order, this span should have text content.
-  if (Array.isArray(span.content)) {
-    return span;
-  }
-  const elementOrder = decompose(span.content, matchers);
-  if (elementOrder.length !== 1) {
-    return span;
-  }
-
-  return convertMatchToSpan(elementOrder[0]);
-};
-
-/**
- * TODO
- * - bold
- * - italic
- * - code
- * - link
- * - definition
- * - footnote
- * - (digressions)
- * - images
- */
 
 const splitTextIntoSections = (lines: string[]): Section[] => {
   let sections = [] as Section[];
@@ -226,13 +51,9 @@ const splitTextIntoSections = (lines: string[]): Section[] => {
       {
         title: headerMatch.groups["title"],
         level: headerMatch.groups["headingNumber"].length,
-        bodies: sectionLinesAfterFirstHeader[i]
-          .map((line_) => processCodeBlock(line_))
-          .map((paragraph) => ({
-            ...paragraph,
-            // span: simplify(applyStylesToSpan(paragraph.span, FILTERS)),
-            span: simplify(applyStylesToSpan(paragraph.span, MATCHERS)),
-          })),
+        bodies: sectionLinesAfterFirstHeader[i].map((line_) =>
+          processCodeBlock(line_)
+        ),
         subsections: [],
       },
     ];
@@ -270,42 +91,24 @@ const nestSections = (sections: Section[]) => {
 };
 
 const processCodeBlock = (bodyText: string): Paragraph => {
-  const lines = bodyText.split("\n");
+  let paragraphLines = bodyText.split("\n");
+  let paragraphType = ParagraphType.REGULAR;
   if (
-    lines.length >= 2 &&
-    lines[0] === "```" &&
-    lines[lines.length - 1] === "```"
+    paragraphLines.length >= 2 &&
+    paragraphLines[0] === "```" &&
+    paragraphLines[paragraphLines.length - 1] === "```"
   ) {
-    return {
-      paragraphType: ParagraphType.CODE_BLOCK,
-      span: { content: lines.slice(1, -1).join("\n") },
-    };
-  } else {
-    return {
-      paragraphType: ParagraphType.REGULAR,
-      span: { content: bodyText },
-    };
+    paragraphLines = paragraphLines.slice(1, -1);
+    paragraphType = ParagraphType.CODE_BLOCK;
   }
+  return {
+    partitions: paragraphLines.map((line) => partitionStringWithMatchers(line)),
+    paragraphType: paragraphType,
+  };
 };
 
 export const convertMarcdownToJsx = (md: string) => {
   const splitByNewlines = md.split("\n\n");
   const sections = nestSections(splitTextIntoSections(splitByNewlines));
-  // console.log(sections);
-
-  // const matchers: Matcher[] = [
-  //   { name: "matcher 1", regex: regex`\*\*.+?\*\*` },
-  //   { name: "matcher 2", regex: regex`_.+?_` },
-  //   { name: "matcher 3", regex: regex`,.+?,` },
-  // ];
-  // console.log(
-  //   decompose(
-  //     "something _really **fun**_ _is_ **happening _ri,g,ht_ _now_** _now_",
-  //     matchers,
-  //     true,
-  //     true
-  //   )
-  // );
-
   return sections;
 };

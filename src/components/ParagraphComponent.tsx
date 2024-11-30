@@ -16,7 +16,11 @@ export default function ParagraphComponent(props: ParagraphComponentProps) {
         paragraph.paragraphType === ParagraphType.CODE_BLOCK && styles.codeBlock
       )}
     >
-      <SpanComponent span={paragraph.span} />
+      {paragraph.partitions.map((partition, i) => (
+        <div className={styles.newLine} key={i}>
+          <SpanComponent partition={partition} />
+        </div>
+      ))}
     </div>
   );
 }

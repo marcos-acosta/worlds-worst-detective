@@ -9,7 +9,7 @@ import { POSTS } from "./logic/posts-util";
 function App() {
   return (
     <>
-      {convertMarcdownToJsx(POSTS.test).map((s: SectionInterface) => (
+      {convertMarcdownToJsx(POSTS.testComplex).map((s: SectionInterface) => (
         <Section section={s} key={s.title} />
       ))}
     </>

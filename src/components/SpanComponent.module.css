@@ -9,3 +9,31 @@
 .code {
   font-family: monospace;
 }
+
+.footnote {
+  background-color: rgb(255, 255, 184);
+  cursor: pointer;
+}
+
+.footnoteContent {
+  border: 1px solid black;
+}
+
+.link {
+  color: rgb(90, 133, 235);
+  text-decoration: underline;
+}
+
+.definition {
+  text-decoration: underline;
+  text-decoration-color: green;
+  text-decoration-thickness: 2px;
+}
+
+.definitionContent {
+  background-color: aliceblue;
+}
+
+.image {
+  height: 50vh;
+}

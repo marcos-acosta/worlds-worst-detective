@@ -1,5 +1,7 @@
-import testPost from "./../posts/test.md?raw";
+import testSimple from "./../posts/testSimple.md?raw";
+import testComplex from "./../posts/testComplex.md?raw";
 
 export const POSTS = {
-  test: testPost,
+  testSimple: testSimple,
+  testComplex: testComplex,
 };
