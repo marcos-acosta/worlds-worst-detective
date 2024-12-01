@@ -28,9 +28,23 @@ const getTitle = (title: string, level: number) => {
   }
 };
 
+const getId = (title: string) =>
+  title
+    .replace(/[^a-zA-Z0-9\s]/, "")
+    .replace(/\s/, "-")
+    .toLowerCase();
+
 export default function Section(props: SectionProps) {
+  const [collapse, setCollapse] = useState(props.section.isDigression);
+  const [isHovering, setIsHovering] = useState(false);
   const section = props.section;
-  const [collapse, setCollapse] = useState(section.isDigression);
+  const id = getId(section.title);
+
+  const handleHashClick = () => {
+    const newUrl = `${window.location.origin}${window.location.pathname}#${id}`;
+    navigator.clipboard.writeText(newUrl);
+    window.location.replace(newUrl);
+  };
 
   return (
     <div
@@ -40,11 +54,16 @@ export default function Section(props: SectionProps) {
         section.level <= 2 && styles.bigHeader,
         section.level >= 3 && styles.smallHeader
       )}
+      id={id}
     >
       {section.isDigression && (
         <div className={styles.digressionTitle}>DIGRESSION</div>
       )}
-      <div className={styles.sectionTitle}>
+      <div
+        className={styles.sectionTitle}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         {getTitle(section.title, section.level)}
         {section.isDigression && (
           <button
@@ -52,6 +71,11 @@ export default function Section(props: SectionProps) {
             onClick={() => setCollapse(!collapse)}
           >
             {collapse ? "EXPAND" : "COLLAPSE"}
+          </button>
+        )}
+        {isHovering && section.level > 1 && (
+          <button onClick={handleHashClick} className={styles.hash}>
+            #
           </button>
         )}
       </div>
