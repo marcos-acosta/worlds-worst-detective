@@ -16,6 +16,7 @@ export interface Partition {
   auxText?: string | PartitionInternal[];
   auxPlainText?: string;
   partitionType: PartitionType;
+  id: string;
 }
 
 interface PartitionInternal extends Partition {
@@ -48,7 +49,7 @@ const MATCHERS: Matcher[] = [
   },
   {
     for: PartitionType.LINK,
-    regex: /\[(?<mainText>.+?)\]\((?<auxPlainText>.+?)\)/,
+    regex: /\[(?<mainText>.+?)\]\{(?<auxPlainText>.+?)\}/,
   },
   {
     for: PartitionType.DEFINITION,

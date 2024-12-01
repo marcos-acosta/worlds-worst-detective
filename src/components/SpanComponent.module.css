@@ -7,33 +7,36 @@
 }
 
 .code {
-  font-family: monospace;
+  font-family: "Ubuntu Mono", monospace;
+  background-color: rgba(0, 0, 0, 0.073);
+  padding: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 3px;
 }
 
 .footnote {
-  background-color: rgb(255, 255, 184);
-  cursor: pointer;
-}
-
-.footnoteContent {
-  border: 1px solid black;
-}
-
-.link {
-  color: rgb(90, 133, 235);
   text-decoration: underline;
+  text-decoration-color: var(--theme-orange);
+  text-decoration-thickness: 2px;
+  cursor: pointer;
 }
 
 .definition {
   text-decoration: underline;
-  text-decoration-color: green;
   text-decoration-thickness: 2px;
-}
-
-.definitionContent {
-  background-color: aliceblue;
+  text-decoration-style: dotted;
+  cursor: pointer;
 }
 
 .image {
   height: 50vh;
+}
+
+.partition {
+  position: relative;
+}
+
+.partition.highlighted {
+  background-color: var(--theme-yellow);
 }

@@ -1,10 +1,13 @@
 import { Paragraph, ParagraphType } from "../logic/md-compiler";
-import { combineClassnames } from "../logic/util";
+import { combineClassnames, joinNodes } from "../logic/util";
 import styles from "./Paragraph.module.css";
+import { Annotation } from "./Post";
 import SpanComponent from "./SpanComponent";
 
 interface ParagraphComponentProps {
   paragraph: Paragraph;
+  isHighlighted: (id: string) => boolean;
+  setAnnotation: (a: Annotation) => void;
 }
 
 export default function ParagraphComponent(props: ParagraphComponentProps) {
@@ -13,14 +16,23 @@ export default function ParagraphComponent(props: ParagraphComponentProps) {
     <div
       className={combineClassnames(
         styles.paragraphContainer,
-        paragraph.paragraphType === ParagraphType.CODE_BLOCK && styles.codeBlock
+        paragraph.paragraphType === ParagraphType.CODE_BLOCK &&
+          styles.codeBlock,
+        paragraph.paragraphType === ParagraphType.QUOTE && styles.quote
       )}
     >
-      {paragraph.partitions.map((partition, i) => (
-        <div className={styles.newLine} key={i}>
-          <SpanComponent partition={partition} />
-        </div>
-      ))}
+      {joinNodes(
+        paragraph.partitions.map((partition) => (
+          <div className={styles.line} key={partition.id}>
+            <SpanComponent
+              partition={partition}
+              isHighlighted={props.isHighlighted}
+              setAnnotation={props.setAnnotation}
+            />
+          </div>
+        )),
+        <div className={styles.newline} />
+      )}
     </div>
   );
 }

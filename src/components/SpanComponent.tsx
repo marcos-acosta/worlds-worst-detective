@@ -1,9 +1,12 @@
-import { useState } from "react";
 import { Partition, PartitionType } from "../logic/partition";
 import styles from "./SpanComponent.module.css";
+import { Annotation, AnnotationType } from "./Post";
+import { combineClassnames } from "../logic/util";
 
 interface SpanComponentProps {
   partition: Partition;
+  isHighlighted: (id: string) => boolean;
+  setAnnotation: (a: Annotation) => void;
 }
 
 const ELEMENT_TYPE_TO_CLASSNAME: { [k: number]: string } = {
@@ -16,33 +19,34 @@ const ELEMENT_TYPE_TO_CLASSNAME: { [k: number]: string } = {
   [PartitionType.IMAGE]: styles.imageContainer,
 };
 
-const AUX_ELEMENT_TYPE_TO_CLASSNAME: { [k: number]: string } = {
-  [PartitionType.FOOTNOTE]: styles.footnoteContent,
-  [PartitionType.DEFINITION]: styles.definitionContent,
-};
-
-const createSpans = (content: string | Partition[]) => {
-  let jsxContent = <></>;
-  if (Array.isArray(content)) {
-    jsxContent = (
-      <>
-        {content.map((partition_, i) => (
-          <SpanComponent partition={partition_} key={i} />
-        ))}
-      </>
-    );
-  } else {
-    jsxContent = <>{content}</>;
-  }
-  return jsxContent;
-};
-
 export default function SpanComponent(props: SpanComponentProps) {
-  const [showAuxText, setShowAuxText] = useState(false);
   const partition = props.partition;
+  const isHighlighted = props.isHighlighted(partition.id);
+
+  const createSpans = (content: string | Partition[]) => {
+    let jsxContent = <></>;
+    if (Array.isArray(content)) {
+      jsxContent = (
+        <>
+          {content.map((partition_) => (
+            <SpanComponent
+              partition={partition_}
+              key={partition_.id}
+              isHighlighted={props.isHighlighted}
+              setAnnotation={props.setAnnotation}
+            />
+          ))}
+        </>
+      );
+    } else {
+      jsxContent = <>{content}</>;
+    }
+    return jsxContent;
+  };
+
   let mainContent = createSpans(partition.mainText);
   const auxContent = partition.auxText && createSpans(partition.auxText);
-  const canShowAuxText = showAuxText && auxContent;
+
   if (
     partition.partitionType === PartitionType.LINK &&
     partition.auxPlainText
@@ -67,19 +71,33 @@ export default function SpanComponent(props: SpanComponentProps) {
       />
     );
   }
+
+  const showAnnotation = (e: React.MouseEvent) => {
+    if (auxContent) {
+      e.stopPropagation();
+      const type =
+        partition.partitionType === PartitionType.FOOTNOTE
+          ? AnnotationType.FOOTNOTE
+          : AnnotationType.DEFINITION;
+      props.setAnnotation({
+        textId: partition.id,
+        title: mainContent,
+        body: auxContent,
+        type: type,
+      });
+    }
+  };
+
   return (
-    <>
-      <span
-        className={ELEMENT_TYPE_TO_CLASSNAME[partition.partitionType]}
-        onClick={() => setShowAuxText(!showAuxText)}
-      >
-        {mainContent}
-      </span>
-      {canShowAuxText && (
-        <div className={AUX_ELEMENT_TYPE_TO_CLASSNAME[partition.partitionType]}>
-          {auxContent}
-        </div>
+    <span
+      className={combineClassnames(
+        styles.partition,
+        ELEMENT_TYPE_TO_CLASSNAME[partition.partitionType],
+        isHighlighted && styles.highlighted
       )}
-    </>
+      onClick={(e) => showAnnotation(e)}
+    >
+      {mainContent}
+    </span>
   );
 }

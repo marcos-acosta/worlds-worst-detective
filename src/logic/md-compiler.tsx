@@ -5,6 +5,7 @@ import { Partition, partitionStringWithMatchers } from "./partition";
 export enum ParagraphType {
   REGULAR,
   CODE_BLOCK,
+  QUOTE,
 }
 
 export interface Paragraph {
@@ -92,6 +93,13 @@ const processCodeBlock = (bodyText: string): Paragraph => {
   ) {
     paragraphLines = paragraphLines.slice(1, -1);
     paragraphType = ParagraphType.CODE_BLOCK;
+  } else if (
+    paragraphLines.length >= 2 &&
+    paragraphLines[0] === "===" &&
+    paragraphLines[paragraphLines.length - 1] === "==="
+  ) {
+    paragraphLines = paragraphLines.slice(1, -1);
+    paragraphType = ParagraphType.QUOTE;
   }
   return {
     partitions: paragraphLines.map((line) => partitionStringWithMatchers(line)),

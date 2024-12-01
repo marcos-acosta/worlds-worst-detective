@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Section as SectionInterface } from "../logic/md-compiler";
 import ParagraphComponent from "./ParagraphComponent";
 import styles from "./Section.module.css";
+import { Annotation } from "./Post";
 
 export interface SectionProps {
   section: SectionInterface;
+  isHighlighted: (id: string) => boolean;
+  setAnnotation: (a: Annotation) => void;
 }
 
 const getTitle = (
@@ -47,12 +50,22 @@ export default function Section(props: SectionProps) {
         <>
           <div className={styles.sectionIntro}>
             {section.bodies.map((body, i) => (
-              <ParagraphComponent paragraph={body} key={i} />
+              <ParagraphComponent
+                paragraph={body}
+                key={i}
+                isHighlighted={props.isHighlighted}
+                setAnnotation={props.setAnnotation}
+              />
             ))}
           </div>
           <div className={styles.subsections}>
             {section.subsections.map((subsection, i) => (
-              <Section key={i} section={subsection} />
+              <Section
+                key={i}
+                section={subsection}
+                isHighlighted={props.isHighlighted}
+                setAnnotation={props.setAnnotation}
+              />
             ))}
           </div>
         </>
