@@ -1,10 +1,13 @@
-import { Partition, PartitionType } from "../logic/partition";
-import styles from "./SpanComponent.module.css";
+import {
+  Partition as PartitionInterface,
+  PartitionType,
+} from "../logic/partition";
+import styles from "./Partition.module.css";
 import { Annotation, AnnotationType } from "./Post";
 import { combineClassnames } from "../logic/util";
 
-interface SpanComponentProps {
-  partition: Partition;
+interface PartitionProps {
+  partition: PartitionInterface;
   isHighlighted: (id: string) => boolean;
   setAnnotation: (a: Annotation | undefined) => void;
 }
@@ -19,17 +22,17 @@ const ELEMENT_TYPE_TO_CLASSNAME: { [k: number]: string } = {
   [PartitionType.IMAGE]: styles.imageContainer,
 };
 
-export default function SpanComponent(props: SpanComponentProps) {
+export default function Partition(props: PartitionProps) {
   const partition = props.partition;
   const isHighlighted = props.isHighlighted(partition.id);
 
-  const createSpans = (content: string | Partition[]) => {
+  const createPartitions = (content: string | PartitionInterface[]) => {
     let jsxContent = <></>;
     if (Array.isArray(content)) {
       jsxContent = (
         <>
           {content.map((partition_) => (
-            <SpanComponent
+            <Partition
               partition={partition_}
               key={partition_.id}
               isHighlighted={props.isHighlighted}
@@ -44,8 +47,8 @@ export default function SpanComponent(props: SpanComponentProps) {
     return jsxContent;
   };
 
-  let mainContent = createSpans(partition.mainText);
-  const auxContent = partition.auxText && createSpans(partition.auxText);
+  let mainContent = createPartitions(partition.mainText);
+  const auxContent = partition.auxText && createPartitions(partition.auxText);
 
   if (
     partition.partitionType === PartitionType.LINK &&

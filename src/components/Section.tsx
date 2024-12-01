@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Section as SectionInterface } from "../logic/md-compiler";
-import ParagraphComponent from "./ParagraphComponent";
 import styles from "./Section.module.css";
 import { Annotation } from "./Post";
+import Paragraph from "./Paragraph";
 
 export interface SectionProps {
   section: SectionInterface;
@@ -50,7 +50,7 @@ export default function Section(props: SectionProps) {
         <>
           <div className={styles.sectionIntro}>
             {section.bodies.map((body, i) => (
-              <ParagraphComponent
+              <Paragraph
                 paragraph={body}
                 key={i}
                 isHighlighted={props.isHighlighted}

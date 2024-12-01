@@ -1,16 +1,19 @@
-import { Paragraph, ParagraphType } from "../logic/md-compiler";
+import {
+  Paragraph as ParagraphInterface,
+  ParagraphType,
+} from "../logic/md-compiler";
 import { combineClassnames, joinNodes } from "../logic/util";
 import styles from "./Paragraph.module.css";
 import { Annotation } from "./Post";
-import SpanComponent from "./SpanComponent";
+import Partition from "./Partition";
 
-interface ParagraphComponentProps {
-  paragraph: Paragraph;
+interface ParagraphProps {
+  paragraph: ParagraphInterface;
   isHighlighted: (id: string) => boolean;
   setAnnotation: (a: Annotation | undefined) => void;
 }
 
-export default function ParagraphComponent(props: ParagraphComponentProps) {
+export default function Paragraph(props: ParagraphProps) {
   const paragraph = props.paragraph;
   return (
     <div
@@ -24,7 +27,7 @@ export default function ParagraphComponent(props: ParagraphComponentProps) {
       {joinNodes(
         paragraph.partitions.map((partition) => (
           <div className={styles.line} key={partition.id}>
-            <SpanComponent
+            <Partition
               partition={partition}
               isHighlighted={props.isHighlighted}
               setAnnotation={props.setAnnotation}
