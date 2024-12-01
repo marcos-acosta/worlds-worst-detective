@@ -127,7 +127,7 @@ Obviously, CSM is not sound, which is a glaring problem. In reality, an unsound 
 
 One last thing to note is that we’re generally only interested in the truth value of _well-formed_ strings. We’re not interested in whether `pqq` is true, because it doesn’t make sense in our interpretation. Even a string like `-p-p-q---`, which _seems_ like it "should" be a theorem, is not well-formed in the P-Q System. Our system was not designed to represent the addition of three numbers, so this string doesn’t make sense in that very narrow context. We have a similar understanding in mathematics; it actually means something to say that `2+2=5` is false. It doesn’t really mean anything to discuss whether `+2(/=` is true or not. We use the idea of well-formed strings to "filter out" the truly meaningless strings.
 
-### Mindless symbol-pushing rules somehow capture truth
+### Mindless symbol-pushing rules somehow capture truth?
 
 At this point, it’s natural to philosophize a little bit about what’s actually happening when we use symbols and rules to represent reality and "truth".
 
@@ -193,7 +193,7 @@ Bucket (iteration 3):
 * Theorem 7: --p--q----
 ```
 
-For example, if we wanted to know whether `---p-q---` (interpreted: 3+1=3) is a theorem, we know it’s not because all the theorems in our bucket are at least 10 symbols long and we haven’t seen this one, which is 9 symbols long.
+For example, if we wanted to know whether `---p-q---` (interpreted: 3+1=3) is a theorem, we know it’s not, because all the theorems in our bucket are at least 10 symbols long and we haven’t seen this one, which is 9 symbols long.
 
 What’s interesting about this decision procedure is that it doesn’t rely on our intuition about addition at all. It _only_ requires that the rules of inference are either _all_ lengthening rules, or _all_ shortening rules, but {not a mix of both}(As we saw, rules that produce theorems of equal length cause a slight headache with this method. But, since there is only a finite number of allowed symbols in a formal system, then we’re still guaranteed that, at the very worst, eventually we’ll have seen every theorem of that length, and we can use the "only add new theorems to the bucket" rule to ensure that the shortest theorem in the bucket eventually has to give way to a longer one.).
 
