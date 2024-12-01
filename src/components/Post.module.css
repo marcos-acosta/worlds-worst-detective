@@ -10,7 +10,7 @@
   grid-template-columns: 80%;
   overflow: scroll;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .annotationContainer {
@@ -18,13 +18,14 @@
   width: 35%;
   right: 20px;
   bottom: 20px;
-  border: 1px dashed var(--theme-gray);
-  border-top: 3px solid var(--theme-gray);
+  border: 1px solid var(--theme-gray);
+  border-top: 4px solid var(--theme-gray);
   background-color: rgba(255, 255, 255, 0.96);
   padding: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .annotationTitle {
@@ -39,6 +40,6 @@
 .annotationType {
   font-family: "Roboto", sans-serif;
   color: var(--theme-gray);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 0.8em;
 }

@@ -6,7 +6,7 @@ import { combineClassnames } from "../logic/util";
 interface SpanComponentProps {
   partition: Partition;
   isHighlighted: (id: string) => boolean;
-  setAnnotation: (a: Annotation) => void;
+  setAnnotation: (a: Annotation | undefined) => void;
 }
 
 const ELEMENT_TYPE_TO_CLASSNAME: { [k: number]: string } = {
@@ -72,8 +72,10 @@ export default function SpanComponent(props: SpanComponentProps) {
     );
   }
 
-  const showAnnotation = (e: React.MouseEvent) => {
-    if (auxContent) {
+  const toggleAnnotation = (e: React.MouseEvent) => {
+    if (isHighlighted) {
+      props.setAnnotation(undefined);
+    } else if (auxContent) {
       e.stopPropagation();
       const type =
         partition.partitionType === PartitionType.FOOTNOTE
@@ -95,7 +97,7 @@ export default function SpanComponent(props: SpanComponentProps) {
         ELEMENT_TYPE_TO_CLASSNAME[partition.partitionType],
         isHighlighted && styles.highlighted
       )}
-      onClick={(e) => showAnnotation(e)}
+      onClick={(e) => toggleAnnotation(e)}
     >
       {mainContent}
     </span>

@@ -7,7 +7,7 @@ import SpanComponent from "./SpanComponent";
 interface ParagraphComponentProps {
   paragraph: Paragraph;
   isHighlighted: (id: string) => boolean;
-  setAnnotation: (a: Annotation) => void;
+  setAnnotation: (a: Annotation | undefined) => void;
 }
 
 export default function ParagraphComponent(props: ParagraphComponentProps) {

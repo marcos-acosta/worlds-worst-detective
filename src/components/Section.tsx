@@ -7,7 +7,7 @@ import { Annotation } from "./Post";
 export interface SectionProps {
   section: SectionInterface;
   isHighlighted: (id: string) => boolean;
-  setAnnotation: (a: Annotation) => void;
+  setAnnotation: (a: Annotation | undefined) => void;
 }
 
 const getTitle = (
