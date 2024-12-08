@@ -1,4 +1,3 @@
-import { regex } from "regex";
 import { split } from "./util";
 import { Partition, partitionStringWithMatchers } from "./partition";
 
@@ -24,7 +23,7 @@ export interface Section {
 const splitTextIntoSections = (lines: string[]): Section[] => {
   let sections = [] as Section[];
   const matchWithHeaderPattern = (s: string) =>
-    s.match(regex`(?<headingNumber>\#+)(?<digression>\s\(d\))?\s(?<title>.+)`);
+    s.match(/(?<headingNumber>\#+)(?<digression>\s\(d\))?\s(?<title>.+)/);
   const [sectionLines, headers] = split(lines, (t: string) =>
     Boolean(matchWithHeaderPattern(t))
   );

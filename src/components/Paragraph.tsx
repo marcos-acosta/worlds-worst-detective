@@ -1,7 +1,7 @@
 import {
   Paragraph as ParagraphInterface,
   ParagraphType,
-} from "../logic/md-compiler";
+} from "../logic/md-compiler.ts";
 import { combineClassnames, joinNodes } from "../logic/util";
 import styles from "./Paragraph.module.css";
 import { Annotation } from "./Post";

@@ -1,6 +1,6 @@
 import Section from "./Section";
 import styles from "./Post.module.css";
-import { Section as SectionInterface } from "./../logic/md-compiler";
+import { Section as SectionInterface } from "./../logic/md-compiler.ts";
 import { useState } from "react";
 import { combineClassnames } from "./../logic/util";
 

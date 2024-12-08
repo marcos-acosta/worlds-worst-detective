@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Section as SectionInterface } from "../logic/md-compiler";
+import { Section as SectionInterface } from "../logic/md-compiler.ts";
 import styles from "./Section.module.css";
 import { Annotation } from "./Post";
 import Paragraph from "./Paragraph";
@@ -30,8 +30,8 @@ const getTitle = (title: string, level: number) => {
 
 const getId = (title: string) =>
   title
-    .replace(/[^a-zA-Z0-9\s]/, "")
-    .replace(/\s/, "-")
+    .replace(/[^a-zA-Z0-9\s\-]/g, "")
+    .replace(/\s/g, "-")
     .toLowerCase();
 
 export default function Section(props: SectionProps) {
