@@ -1,4 +1,5 @@
 import { parseXml, XmlElement } from "@rgrove/parse-xml";
+import { v4 as uuidv4 } from "uuid";
 
 // Headers
 const HEADER_1_PATTERN =
@@ -38,6 +39,14 @@ export interface Matcher {
   pattern: RegExp;
   tag: string;
   subgroups?: string[];
+}
+
+export interface XmlNode {
+  id: string;
+  type?: string;
+  text?: string;
+  attributes: { [key: string]: string };
+  children?: XmlNode[];
 }
 
 const getParameterString = (match: RegExpMatchArray, matcher: Matcher) =>
@@ -173,17 +182,34 @@ export const DEFAULT_MATCHERS: Matcher[] = [
   },
 ];
 
+function isXmlElement(x: any): x is XmlElement {
+  return "start" in x;
+}
+
+const convertToXmlNode = (element: XmlElement): XmlNode => ({
+  id: uuidv4(),
+  attributes: element.attributes,
+  type: element.name,
+  text: element.text,
+  children:
+    element.children &&
+    element.children
+      .filter(isXmlElement)
+      .map((element_) => convertToXmlNode(element_)),
+});
+
 const wrapDocument = (xml: string) => `<${DOCUMENT}>${xml}</${DOCUMENT}>`;
 
 export const parseMarcdownToXml = (
   text: string,
   matchers: Matcher[]
-): XmlElement => {
+): XmlNode => {
   let replacedString = text;
   for (let matcher of matchers) {
     replacedString = replaceAllWithGroups(replacedString, matcher);
   }
   const finalXml = wrapDocument(replacedString);
   const parsedXml = parseXml(finalXml);
-  return parsedXml.children[0] as XmlElement;
+  const xmlNode = convertToXmlNode(parsedXml.children[0] as XmlElement);
+  return xmlNode;
 };

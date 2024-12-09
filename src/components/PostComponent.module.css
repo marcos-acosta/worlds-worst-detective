@@ -35,3 +35,7 @@
 .image {
   height: 100px;
 }
+
+.highlighted {
+  background-color: yellow;
+}

@@ -1,4 +1,3 @@
-import { XmlElement } from "@rgrove/parse-xml";
 import { Fragment, ReactNode } from "react";
 
 export function split<T>(
@@ -43,7 +42,3 @@ export const joinNodes = (sections: ReactNode[], delimiter: ReactNode) => {
     </>
   );
 };
-
-export function isXmlElement(x: any): x is XmlElement {
-  return "start" in x;
-}
