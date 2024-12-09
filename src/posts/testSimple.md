@@ -20,13 +20,15 @@ Separated
 
 ## Header 2 again
 
-more content, and an ![image](https://google.com). Let me also define this %term%((idk, to be _honest_ with you )) for you.
+more content. Let me also define this %term%((idk, to be _honest_ with you )) for you.
 
 """
 That's amore
 
 -Abraham Lincoln
 """
+
+![alt text](addition.png)
 
 # Title 2
 

@@ -1,9 +1,11 @@
-import Post from "./components/Post";
-import { convertMarcdownToJsx } from "./logic/md-compiler";
+import Article from "./components/Article";
+import { DEFAULT_MATCHERS, parseMarcdownToXml } from "./logic/marcdown";
 import { POSTS } from "./logic/posts-util";
 
 function App() {
-  return <Post sections={convertMarcdownToJsx(POSTS.testSimple)} />;
+  return (
+    <Article xml={parseMarcdownToXml(POSTS.testSimple, DEFAULT_MATCHERS)} />
+  );
 }
 
 export default App;

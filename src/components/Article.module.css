@@ -1,0 +1,37 @@
+.lineBreak {
+  height: 10px;
+}
+
+.paragraphBreak {
+  height: 20px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+.codeBlock {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: monospace;
+  background-color: rgb(243, 243, 243);
+}
+
+.quotation {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-left: 3px solid black;
+  padding-left: 5px;
+}
+
+.image {
+  height: 100px;
+}

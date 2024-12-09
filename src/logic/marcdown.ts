@@ -1,4 +1,4 @@
-import { parseXml, XmlDocument } from "@rgrove/parse-xml";
+import { parseXml, XmlElement } from "@rgrove/parse-xml";
 
 // Headers
 const HEADER_1_PATTERN =
@@ -100,7 +100,7 @@ const replaceAllWithGroups = (text: string, matcher: Matcher) => {
   return replacedString + remainderText;
 };
 
-const MATCHERS: Matcher[] = [
+export const DEFAULT_MATCHERS: Matcher[] = [
   {
     pattern: HEADER_1_PATTERN,
     tag: "h1",
@@ -178,11 +178,12 @@ const wrapDocument = (xml: string) => `<${DOCUMENT}>${xml}</${DOCUMENT}>`;
 export const parseMarcdownToXml = (
   text: string,
   matchers: Matcher[]
-): XmlDocument => {
+): XmlElement => {
   let replacedString = text;
   for (let matcher of matchers) {
     replacedString = replaceAllWithGroups(replacedString, matcher);
   }
   const finalXml = wrapDocument(replacedString);
-  return parseXml(finalXml);
+  const parsedXml = parseXml(finalXml);
+  return parsedXml.children[0] as XmlElement;
 };
