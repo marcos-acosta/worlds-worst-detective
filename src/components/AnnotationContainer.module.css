@@ -1,7 +1,28 @@
 .annotationContainer {
   width: 500px;
-  position: fixed;
+  max-width: calc(100% - 40px);
   bottom: 20px;
   right: 20px;
-  border: 1px solid black;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--theme-gray);
+  border-top: 4px solid var(--theme-gray);
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.annotationTitle {
+  background-color: var(--theme-yellow);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.annotationType {
+  font-family: "Roboto", sans-serif;
+  color: var(--theme-gray);
+  margin-bottom: 10px;
+  font-size: 0.8em;
 }

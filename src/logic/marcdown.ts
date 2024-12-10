@@ -200,6 +200,7 @@ const convertToXmlNode = (element: XmlElement): XmlNode => ({
 
 const wrapDocument = (xml: string) => `<${DOCUMENT}>${xml}</${DOCUMENT}>`;
 
+// TODO: Escape angle brackets
 export const parseMarcdownToXml = (
   text: string,
   matchers: Matcher[]

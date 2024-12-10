@@ -6,7 +6,7 @@ import { combineClassnames } from "../logic/util";
 interface PostComponentProps {
   xml: XmlNode;
   isHighlighted: (id: string) => boolean;
-  setAnnotation: (a: Annotation) => void;
+  setAnnotation: (a: Annotation | null) => void;
 }
 
 const wrapContentWithHeader = (level: number, content: JSX.Element) => {
@@ -56,6 +56,7 @@ export default function PostComponent(props: PostComponentProps) {
   const xml = props.xml;
   const attributes = xml.attributes;
   const type = xml.type;
+  const isHighlighted = props.isHighlighted(xml.id);
 
   const renderContent = (node: XmlNode) => (
     <>
@@ -112,7 +113,13 @@ export default function PostComponent(props: PostComponentProps) {
     );
   } else if (type === "img") {
     return (
-      <img src={attributes.src} alt={attributes.alt} className={styles.image} />
+      <div className={styles.imageContainer}>
+        <img
+          src={attributes.src}
+          alt={attributes.alt}
+          className={styles.image}
+        />
+      </div>
     );
   } else if (type && Object.keys(ANNOTATIONS).includes(type)) {
     const annotationData = ANNOTATIONS[type];
@@ -121,17 +128,23 @@ export default function PostComponent(props: PostComponentProps) {
       return (
         <button
           className={combineClassnames(
+            styles.inlineButton,
             annotationData.className,
-            props.isHighlighted(xml.id) && styles.highlighted
+            isHighlighted && styles.highlighted
           )}
-          onClick={() =>
-            props.setAnnotation({
-              textId: xml.id,
-              title: innerContent,
-              body: renderContent(childNode),
-              type: type,
-            })
-          }
+          onClick={(e) => {
+            e.stopPropagation();
+            props.setAnnotation(
+              isHighlighted
+                ? null
+                : {
+                    textId: xml.id,
+                    title: innerContent,
+                    body: renderContent(childNode),
+                    type: type,
+                  }
+            );
+          }}
         >
           {innerContent}
         </button>

@@ -16,13 +16,11 @@ export interface PostProps {
 }
 
 export function Post(props: PostProps) {
-  const [annotation, setAnnotation] = useState(
-    undefined as Annotation | undefined
-  );
+  const [annotation, setAnnotation] = useState(null as Annotation | null);
   const isHighlighted = (id: string) => id === annotation?.textId;
 
   return (
-    <div className={styles.postContainer}>
+    <div className={styles.postContainer} onClick={() => setAnnotation(null)}>
       {annotation && <AnnotationContainer annotation={annotation} />}
       <PostComponent
         xml={props.xml}
