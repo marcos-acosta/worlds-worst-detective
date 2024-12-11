@@ -1,8 +1,8 @@
 import styles from "./Post.module.css";
 import { useState } from "react";
-import { XmlNode } from "../logic/marcdown.ts";
 import PostComponent from "./PostComponent.tsx";
 import AnnotationContainer from "./AnnotationContainer.tsx";
+import { MarklowNode } from "marklow";
 
 export interface Annotation {
   textId: string;
@@ -12,7 +12,7 @@ export interface Annotation {
 }
 
 export interface PostProps {
-  xml: XmlNode;
+  xml: MarklowNode;
 }
 
 export function Post(props: PostProps) {

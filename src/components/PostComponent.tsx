@@ -1,10 +1,10 @@
 import styles from "./PostComponent.module.css";
-import { XmlNode } from "../logic/marcdown";
 import { Annotation } from "./Post";
 import { combineClassnames } from "../logic/util";
+import { MarklowNode } from "marklow";
 
 interface PostComponentProps {
-  xml: XmlNode;
+  xml: MarklowNode;
   isHighlighted: (id: string) => boolean;
   setAnnotation: (a: Annotation | null) => void;
 }
@@ -49,7 +49,7 @@ const ANNOTATIONS: { [k: string]: AnnotationData } = {
 
 const DO_NOT_DISPLAY = ["comment", "definition"];
 
-const findChild = (node: XmlNode, type: string) =>
+const findChild = (node: MarklowNode, type: string) =>
   node.children && node.children.find((node_) => node_.type === type);
 
 export default function PostComponent(props: PostComponentProps) {
@@ -58,7 +58,7 @@ export default function PostComponent(props: PostComponentProps) {
   const type = xml.type;
   const isHighlighted = props.isHighlighted(xml.id);
 
-  const renderContent = (node: XmlNode) => (
+  const renderContent = (node: MarklowNode) => (
     <>
       {node.children ? (
         node.children.map((child) => (
