@@ -1,11 +1,8 @@
 import { Post } from "./components/Post";
-import { DEFAULT_MATCHERS, parseMarcdownToXml } from "./logic/marcdown";
-import { POSTS } from "./logic/posts-util";
+import { getPost, PostNames } from "./logic/posts-util";
 
 function App() {
-  return (
-    <Post xml={parseMarcdownToXml(POSTS.formalSystems, DEFAULT_MATCHERS)} />
-  );
+  return <Post xml={getPost(PostNames.FORMAL_SYSTEMS)} />;
 }
 
 export default App;

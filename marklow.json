@@ -1,0 +1,5 @@
+{
+  "useDefaults": true,
+  "inputDir": "./posts",
+  "outputDir": "./src/posts"
+}
