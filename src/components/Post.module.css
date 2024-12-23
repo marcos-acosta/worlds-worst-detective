@@ -1,9 +1,10 @@
 .postContainer {
   position: relative;
-  font-family: "Playfair Display", sans-serif;
+  font-family: var(--body-font), sans-serif;
   width: 100vw;
   padding-left: 20%;
   padding-right: 20%;
   box-sizing: border-box;
   margin-bottom: 100px;
+  padding-top: 40px;
 }

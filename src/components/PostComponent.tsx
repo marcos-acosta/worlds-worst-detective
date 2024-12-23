@@ -29,11 +29,11 @@ const wrapContentWithHeader = (level: number, content: JSX.Element) => {
 const FONT_STYLES = {
   i: styles.italic,
   b: styles.bold,
-  mono: styles.mono,
+  code: styles.mono,
 };
 
 const BLOCK_STYLES = {
-  code: styles.codeBlock,
+  codeblock: styles.codeBlock,
   quot: styles.quotation,
 };
 
@@ -87,12 +87,7 @@ export default function PostComponent(props: PostComponentProps) {
     return <div className={styles.paragraphBreak} />;
   } else if (type && type.match(/h\d/)) {
     const level = parseInt(type[1]);
-    return (
-      <div className={styles.section}>
-        {wrapContentWithHeader(level, <>{attributes.title}</>)}
-        {innerContent}
-      </div>
-    );
+    return wrapContentWithHeader(level, innerContent);
   } else if (type && Object.keys(FONT_STYLES).includes(type)) {
     return (
       <span className={FONT_STYLES[type as keyof typeof FONT_STYLES]}>
@@ -152,7 +147,6 @@ export default function PostComponent(props: PostComponentProps) {
     }
   } else if (type && DO_NOT_DISPLAY.includes(type)) {
     return <></>;
-  } else {
-    return innerContent;
   }
+  return innerContent;
 }

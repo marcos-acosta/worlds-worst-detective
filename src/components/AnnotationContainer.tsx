@@ -12,7 +12,10 @@ const ANNOTATION_TYPE_TO_STRING: { [k: string]: string } = {
 
 export default function AnnotationContainer(props: AnnotationContainerProps) {
   return (
-    <div className={styles.annotationContainer}>
+    <div
+      className={styles.annotationContainer}
+      onClick={(e) => e.stopPropagation()}
+    >
       {props.annotation.type in ANNOTATION_TYPE_TO_STRING && (
         <div className={styles.annotationType}>
           {ANNOTATION_TYPE_TO_STRING[props.annotation.type]}
