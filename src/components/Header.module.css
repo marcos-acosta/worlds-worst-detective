@@ -1,0 +1,40 @@
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.detectiveImage {
+  height: 35px;
+  margin-right: 8px;
+}
+
+.title {
+  font-size: 30px;
+  font-family: "Xanh Mono";
+  text-transform: uppercase;
+  color: black;
+}
+
+.backButton {
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+}
+
+.backButton > a {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--theme-orange);
+  text-decoration-thickness: 2px;
+}
+
+.headerTitleContainer > a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}

@@ -1,0 +1,61 @@
+.homepageContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.homepageContent {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.detectiveHeader {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.detectiveImage {
+  width: 150px;
+  margin-right: 40px;
+}
+
+.detectiveTitle {
+  font-size: 80px;
+  font-family: "Xanh Mono";
+  text-transform: uppercase;
+  color: black;
+}
+
+.postEntry {
+  margin-bottom: 10px;
+}
+
+.postEntry a {
+  color: inherit;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--theme-orange);
+  text-decoration-thickness: 2px;
+}
+
+.publishDate {
+  font-family: var(--code-font);
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.postTitle {
+  display: inline-block;
+}
+
+.articleList {
+  margin-top: 40px;
+}

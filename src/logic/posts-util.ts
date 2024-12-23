@@ -1,17 +1,17 @@
-import testSimple from "./../posts/testSimple.json?raw";
 import formalSystems from "./../posts/formalSystems.json?raw";
-import { MarklowNode } from "marklow";
 
-export enum PostNames {
-  TEST_SIMPLE,
-  FORMAL_SYSTEMS,
+export interface PostData {
+  content: string;
+  title: string;
+  url: string;
+  datePublished: Date;
 }
 
-export const POSTS = {
-  [PostNames.TEST_SIMPLE]: testSimple,
-  [PostNames.FORMAL_SYSTEMS]: formalSystems,
-};
-
-export const getPost = (post: PostNames) => {
-  return JSON.parse(POSTS[post]) as MarklowNode;
-};
+export const POSTS: PostData[] = [
+  {
+    content: formalSystems,
+    title: "Mechanized reasoning: A look at formal systems",
+    url: "formal-systems",
+    datePublished: new Date("2024-12-23"),
+  },
+];
