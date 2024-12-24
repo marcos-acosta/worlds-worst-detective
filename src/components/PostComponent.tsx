@@ -121,12 +121,13 @@ export default function PostComponent(props: PostComponentProps) {
     const childNode = findChild(xml, annotationData.annotationContentTag);
     if (childNode) {
       return (
-        <button
+        <div
           className={combineClassnames(
             styles.inlineButton,
             annotationData.className,
             isHighlighted && styles.highlighted
           )}
+          role="button"
           onClick={(e) => {
             e.stopPropagation();
             props.setAnnotation(
@@ -142,7 +143,7 @@ export default function PostComponent(props: PostComponentProps) {
           }}
         >
           {innerContent}
-        </button>
+        </div>
       );
     }
   } else if (type && DO_NOT_DISPLAY.includes(type)) {

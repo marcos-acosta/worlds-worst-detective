@@ -95,14 +95,7 @@ h3 {
 }
 
 .inlineButton {
-  display: inline-block;
-  border: none;
-  background-color: transparent;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  margin: 0;
-  padding: 0;
+  display: inline;
 }
 
 .comment {
