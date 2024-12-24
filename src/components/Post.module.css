@@ -2,9 +2,10 @@
   position: relative;
   font-family: var(--body-font), sans-serif;
   width: 100vw;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: max(20px, calc(15% - 20px));
+  padding-right: max(20px, calc(15% - 20px));
   box-sizing: border-box;
   margin-bottom: 100px;
   padding-top: 40px;
+  font-size: clamp(16px, 1.5vw, 18px);
 }
