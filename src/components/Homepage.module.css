@@ -32,7 +32,7 @@
   font-size: clamp(27px, 5.3vw, 64px);
   font-family: "Xanh Mono";
   text-transform: uppercase;
-  color: black;
+  color: var(--theme-black);
 }
 
 .postEntry {

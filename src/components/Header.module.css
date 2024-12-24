@@ -14,7 +14,7 @@
   font-size: clamp(18px, 3vw, 35px);
   font-family: "Xanh Mono";
   text-transform: uppercase;
-  color: black;
+  color: var(--theme-black);
 }
 
 .backButtonContainer {
