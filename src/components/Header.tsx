@@ -4,8 +4,10 @@ import styles from "./Header.module.css";
 export default function Header() {
   return (
     <div className={styles.headerContainer}>
-      <div className={styles.backButton}>
-        <Link to="/">Back</Link>
+      <div className={styles.backButtonContainer}>
+        <div className={styles.backButton}>
+          <Link to="/">Back</Link>
+        </div>
       </div>
       <div className={styles.headerTitleContainer}>
         <Link to="/">
@@ -19,6 +21,7 @@ export default function Header() {
           <div className={styles.title}>World's Worst Detective</div>
         </Link>
       </div>
+      <div />
     </div>
   );
 }

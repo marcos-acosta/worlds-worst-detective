@@ -24,7 +24,6 @@ export function Post(props: PostProps) {
     <>
       <div className={styles.postContainer} onClick={() => setAnnotation(null)}>
         <Header />
-        <br />
         {annotation && <AnnotationContainer annotation={annotation} />}
         <PostComponent
           xml={props.xml}
