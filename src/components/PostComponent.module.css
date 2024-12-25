@@ -86,8 +86,7 @@ h3 {
 }
 
 .image {
-  width: 50%;
-  max-width: 700px;
+  width: clamp(250px, 50%, 700px);
 }
 
 .inlineButton.highlighted {

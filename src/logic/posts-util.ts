@@ -10,7 +10,7 @@ export interface PostData {
 export const POSTS: PostData[] = [
   {
     content: formalSystems,
-    title: "Mechanized reasoning: A look at formal systems",
+    title: "Mechanized reasoning: What are formal systems?",
     url: "formal-systems",
     datePublished: new Date("2024-12-23"),
   },

@@ -1,4 +1,6 @@
-# Mechanized reasoning: A look at formal systems
+![A box](truth-box.png)
+
+# Mechanized reasoning: What are formal systems?
 
 The title for this post was originally just going to be "Formal systems", but that term on its own sparks about as much excitement as "tapioca flour", or "utility closet", so I opted for a more provocative term. What do I mean by "mechanized reasoning"? This is one question we'll dive deep into in this post, but just to pique your interest, consider the following:
 
