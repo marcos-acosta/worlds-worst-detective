@@ -20,6 +20,8 @@ export function Post(props: PostProps) {
   const [annotation, setAnnotation] = useState(null as Annotation | null);
   const isHighlighted = (id: string) => id === annotation?.textId;
 
+  console.log(props.xml);
+
   return (
     <>
       <div className={styles.postContainer} onClick={() => setAnnotation(null)}>

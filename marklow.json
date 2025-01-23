@@ -1,15 +1,6 @@
 {
   "defaultsConfig": {
-    "useAllDefaults": false,
-    "useDefaultHeaders": true,
-    "useDefaultBold": true,
-    "useDefaultItalic": true,
-    "useDefaultCode": true,
-    "useDefaultLink": true,
-    "useDefaultImage": true,
-    "useDefaultBreaks": true,
-    "useDefaultCodeBlock": true,
-    "useDefaultQuotation": true
+    "useAllDefaults": true
   },
   "inputDir": "./posts",
   "outputDir": "./src/posts",

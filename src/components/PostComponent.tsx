@@ -146,6 +146,10 @@ export default function PostComponent(props: PostComponentProps) {
         </div>
       );
     }
+  } else if (type && type === "ul") {
+    return <ul>{innerContent}</ul>;
+  } else if (type && type === "li") {
+    return <li>{innerContent}</li>;
   } else if (type && DO_NOT_DISPLAY.includes(type)) {
     return <></>;
   }
