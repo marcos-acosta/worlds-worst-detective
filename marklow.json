@@ -14,6 +14,10 @@
       "pattern": "(?<!\\w)%(?<body>.+?)%\\(\\((?<definition>.+?)\\)\\)(?!\\w)",
       "tag": "def",
       "subgroups": "definition"
+    },
+    {
+      "pattern": "%%%\\((?<blockType>.+?)\\)\n(?<body>.+?)\n%%%",
+      "tag": "block"
     }
   ]
 }

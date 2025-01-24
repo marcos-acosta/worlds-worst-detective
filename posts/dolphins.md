@@ -1,6 +1,10 @@
 # Social media wasn't the final boss
 
-This is the story of my attempts to reclaim the distraction-free mind I (presumably) once had. I railed against social media only to find that there were many more bosses ahead. In the end, I was forced to wonder: is any of this _actually_ productive? But, I'm getting ahead of myself.
+%%%(tldr)
+This piece is a little different from the other topics I have planned to write about; it's less geeky, and more introspective and speculative. If you've ever obsessed over your productivity to the point of counterproductivity, or imagined how great your life would be if you could just get off of TikTok, I think you'll find this interesting.
+%%%
+
+This is the story of my attempts to reclaim the distraction-free mind I (presumably) once had. I railed against social media only to find that there were many more bosses ahead. In the end, I was forced to wonder: is any of this _actually_ productive? But, I'm getting ahead of myself– let's start at the beginning.
 
 ## The promised land
 
@@ -67,11 +71,11 @@ Humans are not single-objective optimizers, at least, not by nature. It's possib
 
 In fewer words, I sometimes acted as though the path to happiness looked like this:
 
-[insert image]
+![A diagram showing focus leading to productivity leading to happiness. Everything else is a distraction.](doomscrolling/flawed-life-diagram.png)
 
 But in reality, it's more like this:
 
-[insert image]
+![A diagram showing everything interconnected.](doomscrolling/accurate-life-diagram.png)
 
 With this view, it's hard to say that activity X is categorically a distraction whereas activity Y is not; everything is interconnected. It's impossible to compare the _productivity_ of an evening of focused coding versus an evening hanging out with my favorite people. I mean, two weeks without a good hang will kill most of my motivation to get things done. Even scrolling Hacker News (in moderation) can get new ideas running in my head that wouldn't have otherwise occurred to me, and there's _something_ productive in that.
 

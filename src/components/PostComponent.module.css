@@ -67,14 +67,27 @@ h3 {
 .quotation {
   margin-top: 20px;
   margin-bottom: 20px;
-  border: 1px solid var(--theme-dark-blue);
-  border-left: 4px solid var(--theme-dark-blue);
-  background-color: var(--theme-baby-blue);
+  border-left: 4px solid var(--theme-black);
+  white-space: pre-wrap;
+  padding-left: 18px;
+}
+
+.block {
+  border: 1px solid var(--theme-dark-green);
+  border-left: 4px solid var(--theme-dark-green);
+  background-color: var(--theme-baby-green);
   white-space: pre-wrap;
   border-radius: 5px;
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.blockHeader {
+  font-family: var(--sans-serif-font), sans-serif;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 0.8em;
 }
 
 .imageContainer {

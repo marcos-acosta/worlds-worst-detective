@@ -1,6 +1,10 @@
-![A box](truth-box.png)
+![A box that generates true statements](truth-box.png)
 
 # Mechanized reasoning: What are formal systems?
+
+%%%(tldr)
+If you gave me a tape measure, a pencil, and paper, and asked me how long it would take for a brick to fall from the window of my third-story apartment to the sidewalk, I could give you a very accurate answer. We're so used to math that this doesn't feel like wizardry, but it kind of is. How do symbols like `2` and `+` actually relate to the real world? Why do we use math as a source of truth? That's what this piece is about.
+%%%
 
 The title for this post was originally just going to be "Formal systems", but that term on its own sparks about as much excitement as "tapioca flour", or "utility closet", so I opted for a more provocative term. What do I mean by "mechanized reasoning"? This is one question we'll dive deep into in this post, but just to pique your interest, consider the following:
 
@@ -59,14 +63,12 @@ At this point, you might be waiting for me to tell you the whole point of this s
 
 As you may have already noticed, the P-Q System is a representation of addition! More specifically, the addition of two {natural numbers}((In this case, I'm intentionally excluding zero for simplicity's sake, but we could easily modify the P-Q System to include it. For example, we could start with Axiom 1 as `pq` to represent 0+0=0. Alternatively, we could just change our _interpretation_. i.e. We could say that for the first two hyphen groups, one hyphen means "zero", two hyphens means "one", etc. To the right of the `q`, two hyphens means "zero", three hyphens means "one", etc.)). The similarity becomes apparent when we _interpret_ the symbols in a certain way:
 
-```
-p = plus
-q = equals
-- = one
--- = two
---- = three
-etc...
-```
+- `p` = plus
+- `q` = equals
+- `-` = one
+- `--` = two
+- `---` = three
+- etc...
 
 This is interesting. Our formal system’s definition says nothing about math, addition, or even _numbers_ at all. And yet, purely by virtue of the rules of deduction and axiom we chose, its resemblance to addition is undeniable.
 
@@ -323,19 +325,11 @@ The Collatz System also illustrates an interesting fact about formal systems, wh
 
 At this point, you may be wondering what you’re supposed to take away from all of this. This is a fair question; I wonder the same thing too. In all seriousness, my main goal was to bring the following to your attention:
 
-"""
-**Takeaways**
-
-Formal systems describe typographic rules for manipulating meaningless symbols.
-
-Despite having no inherent meaning, formal systems, through their form alone, can have such a strong isomorphism to things in the "real world" (e.g. addition, logic, geometry) that we treat them as equivalent, like treating long addition as a valid way to count things.
-
-Using symbols to model the world has allowed us to understand our universe in a much deeper way than our ancestors.
-
-When a formal system attempts to represent truth somehow, we are often interested in soundness and completeness. A system is sound if all of its theorems, when interpreted, are true. A system is complete if all true statements expressible in the system are theorems. Ideally, formal systems that represent truth would be both sound and complete.
-
-We might want to know whether some given string is a theorem or not, in a finite amount of time. A procedure for this exists for some formal systems, but not all. This suggests that, for all the simplicity of formal systems, we cannot always fully characterize their behavior. This fact lies at the root of essentially all mathematical mysteries.
-"""
+- Formal systems describe typographic rules for manipulating meaningless symbols.
+- Despite having no inherent meaning, formal systems, through their form alone, can have such a strong isomorphism to things in the "real world" (e.g. addition, logic, geometry) that we treat them as equivalent, like treating long addition as a valid way to count things.
+- Using symbols to model the world has allowed us to understand our universe in a much deeper way than our ancestors.
+- When a formal system attempts to represent truth somehow, we are often interested in soundness and completeness. A system is sound if all of its theorems, when interpreted, are true. A system is complete if all true statements expressible in the system are theorems. Ideally, formal systems that represent truth would be both sound and complete.
+- We might want to know whether some given string is a theorem or not, in a finite amount of time. A procedure for this exists for some formal systems, but not all. This suggests that, for all the simplicity of formal systems, we cannot always fully characterize their behavior. This fact lies at the root of essentially all mathematical mysteries.
 
 That’s about it. I intentionally didn’t touch some of the juiciest content which comes up when we connect number theory to formal systems. That’s because I wanted this post to be purely exploratory; something I can point folks to as background for more niche topics.
 

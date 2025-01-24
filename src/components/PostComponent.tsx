@@ -150,6 +150,15 @@ export default function PostComponent(props: PostComponentProps) {
     return <ul>{innerContent}</ul>;
   } else if (type && type === "li") {
     return <li>{innerContent}</li>;
+  } else if (type && type === "block") {
+    return (
+      <div className={combineClassnames(styles.block, attributes.blockType)}>
+        {attributes.blockType === "tldr" && (
+          <div className={styles.blockHeader}>FOREWORD</div>
+        )}
+        {innerContent}
+      </div>
+    );
   } else if (type && DO_NOT_DISPLAY.includes(type)) {
     return <></>;
   }
