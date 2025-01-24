@@ -12,11 +12,11 @@ In my sophomore year of high school, some switch flipped in my brain: I became _
 
 Oh, and he was _productive_. Grey introduced me to the world of [Getting Things Done](https://en.wikipedia.org/wiki/Getting_Things_Done), inspired me to read [The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto) and [Atomic Habits](https://jamesclear.com/atomic-habits), and generally got me thinking about building a _system_ to help keep me productive. Getting swept up in the excitement, I even made a spreadsheet to collect data on almost every quantifiable aspect of my life for two years; I would log all my daily activities down to the minute (e.g. school, homework, sleep) and track other variables like how much {yerba mate}((No, I wasn't a hipster in high school, my family is Argentine.)) I drank and how productive I felt. With all of that data, I made a bunch of nice-looking charts and dashboards. I even had a category for the atrocious amount of time I spent working on the spreadsheet. Turns out I slept more on the weekend and felt less productive on Friday. Who knew?
 
-## The quest
+## Focus!
 
-I knew that productivity required focus, but my focus was like an untamed horse: I'd try to get the horse to trot north, but instead it’d gallop east. Later, I’d try to get it to gallop east, but this time it wouldn’t budge. That's how I spent 3 consecutive days doing nothing other than writing a rulebook for a [sport that could only be played at my college campus](https://defiant-walleye-a50.notion.site/Omegaball-Rulebook-08373562dc53484bbb9ff393ad75d7e1) while my actual obligations fell to the wayside.
+I knew that productivity required focus, but my focus was like an untamed horse: I'd try to get the horse to trot north, but instead it’d gallop east. Later, I’d try to get it to gallop east, but this time it wouldn’t budge. That's how I could spend massive amounts of time polishing my mega-spreadsheet even though it was practically useless. On another memorable occasion, I spent 3 consecutive days doing literally nothing other than writing a rulebook for a [sport that could only be played on my college campus](https://defiant-walleye-a50.notion.site/Omegaball-Rulebook-08373562dc53484bbb9ff393ad75d7e1) while my actual obligations fell to the wayside.
 
-I was aware of this ever since high school (case in point: spreadsheet). Once I acknowledged that change was possible, I decided to embark on a quest to become less distracted, more focused, and therefore more productive. It wouldn't take long before my I met my first challengers.
+Ever since I became aware of that aspect of myself back in high school, I've wanted to change it. And so, with CGP Grey, James Clear, and random people on r/productivity as my mentors, I decided to start making a conscious effort to get better at directing my attention and avoiding distractions.
 
 ### Social media bad
 
@@ -110,7 +110,7 @@ Obviously, in a literal sense, we're always conscious beings, but clearly what H
 
 Looking back, it feels like I was trying to win chess by just capturing pieces; a good idea, but still slightly flawed. It certainly helped in a few ways, like disconnecting from the most algorithmically addictive apps and learning how to recognize the _feeling_ of doomscrolling before it gets too bad. But, it didn't automatically restore my mental stamina because I could always find other "non-productive" activities during those lulls in energy.
 
-I somewhat suspect that instead of my "stamina for conscious work" having decreased, my expectations for myself and my productive output may have just increased. And, perhaps more importantly, I think I've been in the habit of burning myself out and staying burnt out for long periods of time, which is generally not a good recipe for finding one's focus.
+I somewhat suspect that instead of my "stamina for conscious work" having decreased, my expectations for my productive output may have just increased. And, perhaps more importantly, I think I've been in the habit of burning myself out and staying burnt out for long periods of time, which is generally not a good recipe for finding one's focus.
 
 Recently, I've been working on being more forgiving with myself, and becoming less obsessed with labeling everything as either a "distraction" or "not a distraction". For example, when a random thought pops into my head, I'll sometimes let myself crack open the Wikipedia page and take a look, but I try to be sensitive to the moment when the fun vanishes and the doom sets in, at which point I'll close the tabs and take a moment to reset.
 
