@@ -116,6 +116,6 @@ Recently, I've been working on being more forgiving with myself, and becoming le
 
 And as for riding an untamed horse, you know what? {It's fun to just ride one}((This is not horse advice. I've never ridden one.)) every once in a while. Like that time I spent three days writing a rulebook for a new sport? What's funny is that I remember being so preoccupied with all the obligations that I let drop, but I can't remember a single one of those obligations now. Did any of them actually matter? What I do remember now is how much fun we had playing Omegaball.
 
-![My friends playing omegaball](doomscrolling/omegaball.png)
-
 ![My friends playing omegaball](doomscrolling/omegaball-2.png)
+
+![My friends playing omegaball](doomscrolling/omegaball.png)

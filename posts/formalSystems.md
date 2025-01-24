@@ -3,7 +3,7 @@
 # Mechanized reasoning: What are formal systems?
 
 %%%(tldr)
-If you gave me a tape measure, a pencil, and paper, and asked me how long it would take for a brick to fall from the window of my third-story apartment to the sidewalk, I could give you a very accurate answer. We're so used to math that this doesn't feel like wizardry, but it kind of is. How do symbols like `2` and `+` actually relate to the real world? Why do we use math as a source of truth? That's what this piece is about.
+If you gave me a tape measure, a pencil, and paper, and asked me how long it would take for a brick to fall from my third-story apartment window to the sidewalk, I could give you a very accurate answer. We're so used to math being right that this doesn't feel like wizardry, but it kind of is. How do symbols like `2` and `+` actually relate to the real world? Why do we use math as a source of truth? That's what this piece is about.
 %%%
 
 The title for this post was originally just going to be "Formal systems", but that term on its own sparks about as much excitement as "tapioca flour", or "utility closet", so I opted for a more provocative term. What do I mean by "mechanized reasoning"? This is one question we'll dive deep into in this post, but just to pique your interest, consider the following:
