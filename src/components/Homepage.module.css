@@ -37,6 +37,9 @@
 
 .postEntry {
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
 
 .postEntry a {
@@ -61,4 +64,11 @@
 
 .articleList {
   margin-top: 40px;
+}
+
+@media (width <= 600px) {
+  .postEntry {
+    flex-direction: column;
+    align-items: unset;
+  }
 }
