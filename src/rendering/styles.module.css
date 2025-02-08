@@ -1,0 +1,47 @@
+.default {
+  display: inline-block;
+}
+
+.emphasis {
+  font-style: italic;
+  display: inline-block;
+}
+
+.strong {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.paragraph {
+  margin-bottom: 20px;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+li .paragraph {
+  margin-bottom: 0;
+}
+
+.mono {
+  background-color: rgba(0, 0, 0, 0.073);
+  padding: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
+  display: inline-block;
+  font-size: 0.9em;
+}
+
+.blockQuote {
+  border-left: 4px solid black;
+  white-space: pre-wrap;
+  padding-left: 14px;
+  background-color: rgb(249, 249, 249);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
