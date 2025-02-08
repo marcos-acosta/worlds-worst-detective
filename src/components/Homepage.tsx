@@ -43,16 +43,19 @@ export default function Homepage() {
             {POSTS.sort(
               (postA, postB) =>
                 postB.datePublished.valueOf() - postA.datePublished.valueOf()
-            ).map((postData) => (
-              <div key={postData.url} className={styles.postEntry}>
-                <div className={styles.publishDate}>
-                  {formatDate(postData.datePublished)}
-                </div>
-                <div className={styles.postTitle}>
-                  <Link to={`/${postData.url}`}>{postData.title}</Link>
-                </div>
-              </div>
-            ))}
+            ).map(
+              (postData) =>
+                !postData.hide && (
+                  <div key={postData.url} className={styles.postEntry}>
+                    <div className={styles.publishDate}>
+                      {formatDate(postData.datePublished)}
+                    </div>
+                    <div className={styles.postTitle}>
+                      <Link to={`/${postData.url}`}>{postData.title}</Link>
+                    </div>
+                  </div>
+                )
+            )}
           </div>
         </div>
       </div>
