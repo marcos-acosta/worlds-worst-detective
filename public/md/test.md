@@ -18,4 +18,6 @@ And then just regular stuff. Let's list a few things
   - And other other things
 - Conclusion
 
-More stuff.
+More stuff. Something :hook[tangentially related]{id="tangent"}.
+
+:footnote[A _lot_ of things here]{id="tangent"}

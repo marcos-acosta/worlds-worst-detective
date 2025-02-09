@@ -1,15 +1,13 @@
 .default {
-  display: inline-block;
+  cursor: inherit;
 }
 
 .emphasis {
   font-style: italic;
-  display: inline-block;
 }
 
 .strong {
   font-weight: bold;
-  display: inline-block;
 }
 
 .paragraph {
@@ -24,6 +22,13 @@ li .paragraph {
   margin-bottom: 0;
 }
 
+.hook {
+  text-decoration: underline;
+  text-decoration-color: rgb(250, 171, 23);
+  text-decoration-thickness: 2px;
+  cursor: pointer;
+}
+
 .mono {
   background-color: rgba(0, 0, 0, 0.073);
   padding: 5px;
@@ -32,7 +37,6 @@ li .paragraph {
   border-radius: 3px;
   margin-left: 2px;
   margin-right: 2px;
-  display: inline-block;
   font-size: 0.9em;
 }
 
@@ -44,4 +48,8 @@ li .paragraph {
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
 }
