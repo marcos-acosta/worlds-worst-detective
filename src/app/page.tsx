@@ -23,17 +23,20 @@ export default function Home() {
     extensions: [directive()],
     mdastExtensions: [directiveFromMarkdown()],
   });
-  console.log(tree);
-  console.log(`Annotation id: ${annotationId}`);
 
   return (
-    <div className={styles.blogContainer} onClick={() => setAnnotationId(null)}>
-      <div className={styles.textContainer}>
-        <AstRenderer
-          root={tree}
-          annotationId={annotationId}
-          setAnnotationId={setAnnotationId}
-        />
+    <div
+      className={styles.cancelClickScreen}
+      onClick={() => setAnnotationId(null)}
+    >
+      <div className={styles.blogContainer}>
+        <div className={styles.textContainer}>
+          <AstRenderer
+            root={tree}
+            annotationId={annotationId}
+            setAnnotationId={setAnnotationId}
+          />
+        </div>
       </div>
     </div>
   );

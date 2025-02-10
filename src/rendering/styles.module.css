@@ -44,12 +44,119 @@ li .paragraph {
   border-left: 4px solid black;
   white-space: pre-wrap;
   padding-left: 14px;
-  background-color: rgb(249, 249, 249);
+  background-color: rgba(0, 0, 0, 0.035);
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 20px;
 }
 
+.footnote {
+  width: 500px;
+  max-width: calc(100% - 40px);
+  max-height: 50%;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+  background-color: #faf9f6;
+  border: 1px solid rgb(195, 195, 195);
+  border-top: 4px solid rgb(250, 171, 23);
+  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  overflow-y: scroll;
+  z-index: 2;
+}
+
+.annotationTypeText {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: rgb(87, 87, 87);
+  margin-bottom: 7px;
+}
+
 .hidden {
   display: none;
+}
+
+.definitionHook {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-style: dotted;
+  cursor: default;
+  position: relative;
+}
+
+.definitionHook .definitionTooltip {
+  visibility: hidden;
+  width: 350px;
+  border: 1px solid rgb(195, 195, 195);
+  border-top: 4px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: absolute;
+  z-index: 2;
+  top: 150%;
+  left: 50%;
+  margin-left: -175px;
+  background-color: #faf9f6;
+}
+
+.definitionHook:hover .definitionTooltip {
+  visibility: visible;
+}
+
+.definitionHook .definitionTooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.code {
+  white-space: pre-wrap;
+  background-color: rgba(0, 0, 0, 0.794);
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #faf9f6;
+  font-size: 0.9em;
+  border-radius: 5px;
+}
+
+.imageContainer {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: unset;
+}
+
+.imageTitle {
+  margin-top: 12px;
+  font-style: italic;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+.imageAndTitleContainer {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  width: 90%;
 }

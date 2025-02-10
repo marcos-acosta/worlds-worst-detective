@@ -1,8 +1,9 @@
 import React from "react";
 import { Node, RootContent } from "mdast";
 import styles from "./styles.module.css";
-import { JetBrains_Mono, Bree_Serif } from "next/font/google";
+import { JetBrains_Mono, Bree_Serif, Roboto } from "next/font/google";
 import { combineClasses } from "@/util";
+import Image from "next/image";
 
 export const monospaceFont = JetBrains_Mono({
   subsets: ["latin"],
@@ -10,6 +11,11 @@ export const monospaceFont = JetBrains_Mono({
 });
 
 export const serifFont = Bree_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export const sansSerif = Roboto({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -23,6 +29,12 @@ interface AstRendererProps {
 interface TextDirectiveNode extends Node {
   name: string;
   attributes: { [k: string]: string };
+}
+
+interface ImageNode extends Node {
+  url: string;
+  alt: string;
+  title?: string;
 }
 
 export default function AstRenderer(props: AstRendererProps) {
@@ -91,13 +103,68 @@ export default function AstRenderer(props: AstRendererProps) {
                 node.attributes["id"] !== props.annotationId &&
                 styles.hidden
             )}
+            onClick={(e) => e.stopPropagation()}
           >
+            <div
+              className={combineClasses(
+                styles.annotationTypeText,
+                sansSerif.className
+              )}
+            >
+              footnote
+            </div>
             {child}
           </div>
+        );
+      case "definition":
+        return (
+          <span
+            className={styles.definitionHook}
+            onClick={(e) => setAnnotationIdAndStopPropagation(e, node)}
+          >
+            {child}
+            <span className={styles.definitionTooltip}>
+              <div
+                className={combineClasses(
+                  styles.annotationTypeText,
+                  sansSerif.className
+                )}
+              >
+                definition
+              </div>
+              {node.attributes["def"]}
+            </span>
+          </span>
         );
       default:
         return child;
     }
+  };
+
+  const wrapImage = (node: ImageNode) => {
+    return (
+      <div className={styles.imageContainer}>
+        <div className={styles.imageAndTitleContainer}>
+          <Image
+            src={`/images/${node.url}`}
+            alt={node.alt}
+            width={500}
+            height={500}
+            className={styles.image}
+          />
+          {node.title && (
+            <div
+              className={combineClasses(styles.imageTitle, sansSerif.className)}
+            >
+              <span className="material-symbols-outlined">
+                switch_access_shortcut
+              </span>
+              {node.title}
+            </div>
+          )}
+        </div>
+      </div>
+    );
   };
 
   const wrapChildren = (node: Node, child: JSX.Element) => {
@@ -124,12 +191,20 @@ export default function AstRenderer(props: AstRendererProps) {
         );
       case "blockquote":
         return <div className={styles.blockQuote}>{child}</div>;
+      case "code":
+        return (
+          <div className={combineClasses(styles.code, monospaceFont.className)}>
+            {child}
+          </div>
+        );
       case "list":
         return <ul>{child}</ul>;
       case "listItem":
         return <li>{child}</li>;
       case "textDirective":
         return wrapTextDirective(node as TextDirectiveNode, child);
+      case "image":
+        return wrapImage(node as ImageNode);
       default:
         return child;
     }
