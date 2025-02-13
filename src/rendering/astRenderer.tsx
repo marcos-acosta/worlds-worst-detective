@@ -31,6 +31,10 @@ interface TextDirectiveNode extends Node {
   attributes: { [k: string]: string };
 }
 
+interface LinkNode extends Node {
+  url: string;
+}
+
 interface ImageNode extends Node {
   url: string;
   alt: string;
@@ -81,6 +85,14 @@ export default function AstRenderer(props: AstRendererProps) {
     } else {
       return <h1 className={serifFont.className}>{child}</h1>;
     }
+  };
+
+  const wrapLink = (node: LinkNode, child: JSX.Element) => {
+    return (
+      <a href={node.url} target="_blank">
+        {child}
+      </a>
+    );
   };
 
   const wrapTextDirective = (node: TextDirectiveNode, child: JSX.Element) => {
@@ -149,7 +161,7 @@ export default function AstRenderer(props: AstRendererProps) {
             src={`/images/${node.url}`}
             alt={node.alt}
             width={500}
-            height={500}
+            height={200}
             className={styles.image}
           />
           {node.title && (
@@ -205,6 +217,9 @@ export default function AstRenderer(props: AstRendererProps) {
         return wrapTextDirective(node as TextDirectiveNode, child);
       case "image":
         return wrapImage(node as ImageNode);
+      case "link":
+        console.log(node);
+        return wrapLink(node as LinkNode, child);
       default:
         return child;
     }
