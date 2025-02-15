@@ -21,7 +21,7 @@ export const POSTS: PostData[] = [
   {
     title: "No dumb questions: Are there unthinkable thoughts?",
     url: "unthinkable-thoughts",
-    datePublished: makeDateLocalTime(2025, 1, 27),
+    datePublished: makeDateLocalTime(2025, 2, 15),
     hide: true,
   },
 ];

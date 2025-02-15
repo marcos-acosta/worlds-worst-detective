@@ -156,6 +156,7 @@ li .paragraph {
 .image {
   width: 100%;
   height: unset;
+  border-radius: 5px;
 }
 
 .imageTitle {
@@ -164,8 +165,9 @@ li .paragraph {
   font-size: 0.8em;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   flex-shrink: 1;
+  gap: 5px;
 }
 
 .imageAndTitleContainer {
