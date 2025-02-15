@@ -1,7 +1,7 @@
 import React from "react";
 import { Node, RootContent } from "mdast";
 import styles from "./styles.module.css";
-import { combineClasses } from "@/util";
+import { combineClasses, textToSlug } from "@/util";
 import Image from "next/image";
 import { ContainerDirective } from "mdast-util-directive";
 import { monospaceFont, sansSerif, serifFont } from "@/app/page";
@@ -27,6 +27,37 @@ interface ImageNode extends Node {
   title?: string;
 }
 
+const treatTrailingSpaces = (str: string) => {
+  const startsWithSpace = str.startsWith(" ");
+  const endsWithSpace = str.endsWith(" ");
+  const trimmed = str.trim();
+  return (
+    <>
+      {startsWithSpace ? <>&nbsp;</> : ""}
+      {trimmed}
+      {endsWithSpace ? <>&nbsp;</> : ""}
+    </>
+  );
+};
+
+const extractSlugFromHeaderNode = (headerNode: Node) => {
+  if ("children" in headerNode) {
+    const textNode = headerNode.children as RootContent[];
+    if ("value" in textNode[0]) {
+      return textToSlug(textNode[0].value);
+    }
+  }
+  return undefined;
+};
+
+const clickLink = (slug: string | undefined) => {
+  if (!slug) {
+    return;
+  }
+  window.history.replaceState({}, "", `#${slug}`);
+  navigator.clipboard.writeText(window.location.href);
+};
+
 export default function AstRenderer(props: AstRendererProps) {
   const setAnnotationIdAndStopPropagation = (
     event: React.MouseEvent<HTMLSpanElement>,
@@ -36,40 +67,70 @@ export default function AstRenderer(props: AstRendererProps) {
     props.setAnnotationId(node.attributes["id"]);
   };
 
-  const treatTrailingSpaces = (str: string) => {
-    const startsWithSpace = str.startsWith(" ");
-    const endsWithSpace = str.endsWith(" ");
-    const trimmed = str.trim();
-    return (
-      <>
-        {startsWithSpace ? <>&nbsp;</> : ""}
-        {trimmed}
-        {endsWithSpace ? <>&nbsp;</> : ""}
-      </>
-    );
-  };
-
   const wrapHeader = (node: Node, child: JSX.Element) => {
     if ("depth" in node) {
-      const depth = node.depth;
+      const depth = node.depth as number;
+      const slug = extractSlugFromHeaderNode(node);
+      const childWithLink =
+        depth > 1 ? (
+          <div className={styles.alignHeader}>
+            {child}
+            <span
+              role="button"
+              onClick={() => clickLink(slug)}
+              className={combineClasses(
+                "material-symbols-outlined",
+                styles.linkButton
+              )}
+            >
+              link
+            </span>
+          </div>
+        ) : (
+          child
+        );
       switch (depth) {
         case 1:
-          return <h1 className={serifFont.className}>{child}</h1>;
+          return <h1 className={serifFont.className}>{childWithLink}</h1>;
         case 2:
-          return <h2 className={serifFont.className}>{child}</h2>;
+          return (
+            <h2 className={serifFont.className} id={slug}>
+              {childWithLink}
+            </h2>
+          );
         case 3:
-          return <h3 className={serifFont.className}>{child}</h3>;
+          return (
+            <h3 className={serifFont.className} id={slug}>
+              {childWithLink}
+            </h3>
+          );
         case 4:
-          return <h4 className={serifFont.className}>{child}</h4>;
+          return (
+            <h4 className={serifFont.className} id={slug}>
+              {childWithLink}
+            </h4>
+          );
         case 5:
-          return <h5 className={serifFont.className}>{child}</h5>;
+          return (
+            <h5 className={serifFont.className} id={slug}>
+              {childWithLink}
+            </h5>
+          );
         case 6:
-          return <h6 className={serifFont.className}>{child}</h6>;
+          return (
+            <h6 className={serifFont.className} id={slug}>
+              {childWithLink}
+            </h6>
+          );
         default:
-          return <h1 className={serifFont.className}>{child}</h1>;
+          return (
+            <h1 className={serifFont.className} id={slug}>
+              {childWithLink}
+            </h1>
+          );
       }
     } else {
-      return <h1 className={serifFont.className}>{child}</h1>;
+      return <h6 className={serifFont.className}>{child}</h6>;
     }
   };
 

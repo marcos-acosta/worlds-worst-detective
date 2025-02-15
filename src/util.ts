@@ -19,3 +19,10 @@ export const makeDateLocalTime = (year: number, month: number, day: number) => {
   date.setHours(12);
   return date;
 };
+
+export const textToSlug = (text: string) => {
+  return text
+    .replaceAll(/[^a-zA-Z0-9\s\-]/g, "")
+    .toLowerCase()
+    .replaceAll(/\s/g, "-");
+};

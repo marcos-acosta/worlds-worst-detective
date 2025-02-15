@@ -176,3 +176,17 @@ li .paragraph {
   flex-direction: column;
   width: 90%;
 }
+
+.linkButton {
+  margin-left: 8px;
+  color: gray;
+  font-weight: initial;
+  margin-bottom: -4px;
+  cursor: pointer;
+}
+
+.alignHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

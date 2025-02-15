@@ -12,6 +12,7 @@ import { combineClasses } from "@/util";
 import Image from "next/image";
 import { xanh_mono } from "../page";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function Article() {
   const [content, setContent] = useState(null as Node | null);
@@ -19,6 +20,7 @@ export default function Article() {
   const [scrollingUp, setScrollingUp] = useState(true);
   const paramsNew = useParams();
   const [annotationId, setAnnotationId] = useState(null as string | null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     async function fetchPosts() {
@@ -49,6 +51,24 @@ export default function Article() {
       removeEventListener("scroll", updateScrollDirection);
     };
   }, [scrollY]);
+
+  useEffect(() => {
+    // Get hash from URL
+    const hash = window.location.hash;
+    if (hash) {
+      // Add a small delay to ensure content is rendered
+      console.log("here");
+
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      }, 1000);
+    }
+  }, [searchParams]); // Re-run when search params change
 
   return content ? (
     <div

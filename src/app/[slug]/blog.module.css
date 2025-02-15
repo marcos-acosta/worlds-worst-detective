@@ -42,6 +42,7 @@
 
 .headerContainer.hide {
   opacity: 0;
+  pointer-events: none;
 }
 
 .titleContainer {
@@ -50,6 +51,10 @@
   align-items: center;
   gap: 20px;
   cursor: pointer;
+}
+
+.hide .titleContainer {
+  cursor: initial;
 }
 
 .detectiveImage {
