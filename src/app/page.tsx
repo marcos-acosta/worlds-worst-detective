@@ -94,9 +94,7 @@ export default function Homepage() {
                       {formatDate(postData.datePublished)}
                     </div>
                     <div className={styles.postTitle}>
-                      <Link href={`/blog/${postData.url}`}>
-                        {postData.title}
-                      </Link>
+                      <Link href={`/${postData.url}`}>{postData.title}</Link>
                     </div>
                   </div>
                 )

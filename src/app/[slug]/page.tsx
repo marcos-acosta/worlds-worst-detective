@@ -16,9 +16,7 @@ export default function Article() {
 
   useEffect(() => {
     async function fetchPosts() {
-      const res = await fetch(
-        `http://localhost:3001/api/blog/${paramsNew.slug}`
-      );
+      const res = await fetch(`http://localhost:3001/api/${paramsNew.slug}`);
       const data = await res.json();
       const tree = fromMarkdown(data.contents, {
         extensions: [directive()],
