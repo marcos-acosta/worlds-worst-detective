@@ -46,8 +46,23 @@ li .paragraph {
   padding-left: 14px;
   padding-right: 14px;
   background-color: rgba(0, 0, 0, 0.035);
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.tldr {
+  /* border: 1px solid rgb(206, 102, 81);
+  border-top: 4px solid rgb(206, 102, 81); */
+  background-color: rgb(253, 249, 241);
+  border: 1px solid rgb(250, 171, 23);
+  border-top: 4px solid rgb(250, 171, 23);
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 

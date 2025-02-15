@@ -1,10 +1,10 @@
 ![A box that generates true statements](formal-systems/math-box.png)
 
-# Why is math always right?
+# No dumb questions: Why is math always right?
 
-%%%(tldr)
+:::tldr
 If you gave me a tape measure, a pencil, and paper, and asked me how long it would take for a brick to fall from my third-story apartment window to the sidewalk, I could give you a very accurate answer. We're so used to math being right that this doesn't feel like wizardry, but it kind of is. How do symbols like `2` and `+` actually relate to the real world? Why do we use math as a source of truth? That's what this piece is about.
-%%%
+:::
 
 The title for this essay was originally "Mechanized reasoning: What are formal systems?", but the term "formal system" sparks about as much excitement as "tapioca flour", or "utility closet", so I opted for a more evocative headline. As we begin, it may not be immediately apparent what formal systems have to do with the titular question, but I promise that it'll soon become very clear.
 

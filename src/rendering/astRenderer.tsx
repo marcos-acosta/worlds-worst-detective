@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { JetBrains_Mono, Bree_Serif, Roboto } from "next/font/google";
 import { combineClasses } from "@/util";
 import Image from "next/image";
+import { ContainerDirective } from "mdast-util-directive";
 
 export const monospaceFont = JetBrains_Mono({
   subsets: ["latin"],
@@ -93,6 +94,30 @@ export default function AstRenderer(props: AstRendererProps) {
         {child}
       </a>
     );
+  };
+
+  const wrapContainerDirective = (
+    node: ContainerDirective,
+    child: JSX.Element
+  ) => {
+    switch (node.name) {
+      case "tldr":
+        return (
+          <div className={styles.tldr}>
+            <div
+              className={combineClasses(
+                styles.annotationTypeText,
+                sansSerif.className
+              )}
+            >
+              foreword
+            </div>
+            {child}
+          </div>
+        );
+      default:
+        return child;
+    }
   };
 
   const wrapTextDirective = (node: TextDirectiveNode, child: JSX.Element) => {
@@ -218,8 +243,9 @@ export default function AstRenderer(props: AstRendererProps) {
       case "image":
         return wrapImage(node as ImageNode);
       case "link":
-        console.log(node);
         return wrapLink(node as LinkNode, child);
+      case "containerDirective":
+        return wrapContainerDirective(node as ContainerDirective, child);
       default:
         return child;
     }

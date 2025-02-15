@@ -25,6 +25,7 @@ export default function Article() {
         mdastExtensions: [directiveFromMarkdown()],
       });
       setContent(tree);
+      console.log(tree);
     }
     fetchPosts();
   }, []);
