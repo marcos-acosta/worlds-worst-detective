@@ -89,45 +89,22 @@ export default function AstRenderer(props: AstRendererProps) {
         ) : (
           child
         );
+      const classNameAndId = { className: serifFont.className, id: slug };
       switch (depth) {
         case 1:
           return <h1 className={serifFont.className}>{childWithLink}</h1>;
         case 2:
-          return (
-            <h2 className={serifFont.className} id={slug}>
-              {childWithLink}
-            </h2>
-          );
+          return <h2 {...classNameAndId}>{childWithLink}</h2>;
         case 3:
-          return (
-            <h3 className={serifFont.className} id={slug}>
-              {childWithLink}
-            </h3>
-          );
+          return <h3 {...classNameAndId}>{childWithLink}</h3>;
         case 4:
-          return (
-            <h4 className={serifFont.className} id={slug}>
-              {childWithLink}
-            </h4>
-          );
+          return <h4 {...classNameAndId}>{childWithLink}</h4>;
         case 5:
-          return (
-            <h5 className={serifFont.className} id={slug}>
-              {childWithLink}
-            </h5>
-          );
+          return <h5 {...classNameAndId}>{childWithLink}</h5>;
         case 6:
-          return (
-            <h6 className={serifFont.className} id={slug}>
-              {childWithLink}
-            </h6>
-          );
+          return <h6 {...classNameAndId}>{childWithLink}</h6>;
         default:
-          return (
-            <h1 className={serifFont.className} id={slug}>
-              {childWithLink}
-            </h1>
-          );
+          return <h6 {...classNameAndId}>{childWithLink}</h6>;
       }
     } else {
       return <h6 className={serifFont.className}>{child}</h6>;
