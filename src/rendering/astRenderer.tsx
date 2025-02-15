@@ -1,25 +1,10 @@
 import React from "react";
 import { Node, RootContent } from "mdast";
 import styles from "./styles.module.css";
-import { JetBrains_Mono, Bree_Serif, Roboto } from "next/font/google";
 import { combineClasses } from "@/util";
 import Image from "next/image";
 import { ContainerDirective } from "mdast-util-directive";
-
-export const monospaceFont = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-export const serifFont = Bree_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-export const sansSerif = Roboto({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import { monospaceFont, sansSerif, serifFont } from "@/app/page";
 
 interface AstRendererProps {
   root: Node;

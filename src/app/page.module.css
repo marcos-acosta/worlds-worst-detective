@@ -1,0 +1,73 @@
+.homepageContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 18px;
+  padding-bottom: 50px;
+}
+
+.homepageContent {
+  width: clamp(250px, 80%, 900px);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+.detectiveHeader {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.detectiveImage {
+  width: clamp(50px, 10vw, 120px);
+  margin-right: clamp(13px, 2.7vw, 40px);
+  height: unset;
+}
+
+.detectiveTitle {
+  font-size: clamp(27px, 5.3vw, 64px);
+  text-transform: uppercase;
+}
+
+.postEntry {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.postEntry a {
+  color: inherit;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: rgb(250, 171, 23);
+  text-decoration-thickness: 2px;
+}
+
+.publishDate {
+  display: inline-block;
+  padding-right: 20px;
+  font-size: 0.8em;
+}
+
+.postTitle {
+  display: inline-block;
+}
+
+.articleList {
+  margin-top: 40px;
+}
+
+@media (width <= 600px) {
+  .postEntry {
+    flex-direction: column;
+    align-items: unset;
+  }
+}
