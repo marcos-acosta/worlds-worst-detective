@@ -28,6 +28,7 @@ interface ImageNode extends Node {
 }
 
 const treatTrailingSpaces = (str: string) => {
+  // return str.trim();
   const startsWithSpace = str.startsWith(" ");
   const endsWithSpace = str.endsWith(" ");
   const trimmed = str.trim();
@@ -226,7 +227,7 @@ export default function AstRenderer(props: AstRendererProps) {
   const wrapChildren = (node: Node, child: JSX.Element) => {
     const type = node.type;
     if (!type) {
-      return <span>{child}</span>;
+      return <span>child</span>;
     }
     switch (type) {
       case "heading":
@@ -266,7 +267,7 @@ export default function AstRenderer(props: AstRendererProps) {
       case "containerDirective":
         return wrapContainerDirective(node as ContainerDirective, child);
       default:
-        return <span>{child}</span>;
+        return child;
     }
   };
 
@@ -287,7 +288,7 @@ export default function AstRenderer(props: AstRendererProps) {
 
   const getChildren = (node: Node) => {
     return "value" in node ? (
-      <span>{treatTrailingSpaces(node.value as string)}</span>
+      <>{treatTrailingSpaces(node.value as string)}</>
     ) : "children" in node ? (
       renderChildren(node.children as RootContent[])
     ) : (
