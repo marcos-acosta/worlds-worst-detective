@@ -12,7 +12,7 @@ export const formatDate = (date: Date) =>
   )}-${padWithZeroes(date.getDate(), 2)}`;
 
 export const makeDateLocalTime = (year: number, month: number, day: number) => {
-  let date = new Date();
+  const date = new Date();
   date.setFullYear(year);
   date.setMonth(month - 1);
   date.setDate(day);

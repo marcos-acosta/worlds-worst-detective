@@ -34,7 +34,7 @@ export default function Article() {
       console.log(tree);
     }
     fetchPosts();
-  }, []);
+  }, [paramsNew.slug]);
 
   const updateScrollDirection = () => {
     setScrollY(window.scrollY);
@@ -50,15 +50,13 @@ export default function Article() {
     return () => {
       removeEventListener("scroll", updateScrollDirection);
     };
-  }, [scrollY]);
+  }, [scrollY, updateScrollDirection]);
 
   useEffect(() => {
     // Get hash from URL
     const hash = window.location.hash;
     if (hash) {
       // Add a small delay to ensure content is rendered
-      console.log("here");
-
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
@@ -68,7 +66,7 @@ export default function Article() {
         }
       }, 1000);
     }
-  }, [searchParams]); // Re-run when search params change
+  }, [searchParams]);
 
   return content ? (
     <div
@@ -93,7 +91,7 @@ export default function Article() {
             <div
               className={combineClasses(styles.headerText, xanh_mono.className)}
             >
-              world's worst detective
+              world&apos;s worst detective
             </div>
           </Link>
         </div>

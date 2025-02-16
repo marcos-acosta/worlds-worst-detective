@@ -76,8 +76,8 @@ export default function Homepage() {
               LLMs should always punctuate their responses with a pun and an
               emoji? Does getting hit by a car preclude me from writing a guide
               to jaywalking? Why was the man at the bodega today in such a rush
-              for a sandwich that he couldn't wait two minutes for the deli guy
-              to come back?
+              for a sandwich that he couldn&apos;t wait two minutes for the deli
+              guy to come back?
             </p>
             <p>
               The list goes on. But rest assured&ndash;{" "}

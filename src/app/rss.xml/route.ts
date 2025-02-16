@@ -14,7 +14,7 @@ export default async function generateRssFeed() {
 
   const feed = new RSS(feedOptions);
 
-  POSTS.map((post) => {
+  POSTS.forEach((post) => {
     !post.hide &&
       feed.item({
         title: post.title,
@@ -26,7 +26,7 @@ export default async function generateRssFeed() {
 
   return feed;
 }
-export async function GET(request: Request) {
+export async function GET() {
   const rss = await generateRssFeed();
   const xml = rss.xml();
   const headers = new Headers();
