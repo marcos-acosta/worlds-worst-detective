@@ -26,3 +26,8 @@ export const textToSlug = (text: string) => {
     .toLowerCase()
     .replaceAll(/\s/g, "-");
 };
+
+export const SITE_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3001/"
+    : "https://worldsworstdetective.com/";

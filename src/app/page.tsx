@@ -4,6 +4,8 @@ import { combineClasses, formatDate } from "@/util";
 import { POSTS } from "@/posts";
 import Image from "next/image";
 import { monospaceFont, titleFont } from "@/fonts";
+import rssImage from "./../../public/images/rss.png";
+import detectiveImage from "./../../public/images/detective.png";
 
 export default function Homepage() {
   return (
@@ -13,20 +15,18 @@ export default function Homepage() {
           <div className={styles.socialContainer}>
             <Link href="/rss.xml">
               <Image
-                src="/images/rss.png"
+                src={rssImage}
+                alt="The RSS symbol"
                 width={25}
                 height={25}
-                alt="The RSS symbol"
               />
             </Link>
           </div>
           <div className={styles.detectiveHeader}>
             <Image
-              src="/images/detective.png"
+              src={detectiveImage}
               alt="A little detective icon"
               className={styles.detectiveImage}
-              width={85}
-              height={178}
             />
             <div
               className={combineClasses(

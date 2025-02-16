@@ -8,11 +8,12 @@ import styles from "./blog.module.css";
 import { directive } from "micromark-extension-directive";
 import { directiveFromMarkdown } from "mdast-util-directive";
 import { useParams } from "next/navigation";
-import { combineClasses } from "@/util";
+import { combineClasses, SITE_URL } from "@/util";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { titleFont } from "@/fonts";
+import detectiveImage from "./../../../public/images/detective.png";
 
 export default function Article() {
   const [content, setContent] = useState(null as Node | null);
@@ -22,14 +23,9 @@ export default function Article() {
   const [annotationId, setAnnotationId] = useState(null as string | null);
   const searchParams = useSearchParams();
 
-  const siteUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3001/"
-      : "https://worldsworstdetective.com/";
-
   useEffect(() => {
     async function fetchPosts() {
-      const res = await fetch(`${siteUrl}api/${paramsNew.slug}`);
+      const res = await fetch(`${SITE_URL}api/${paramsNew.slug}`);
       const data = await res.json();
       const tree = fromMarkdown(data.contents, {
         extensions: [directive()],
@@ -87,9 +83,7 @@ export default function Article() {
           <Link href="/" className={styles.titleContainer}>
             <Image
               className={styles.detectiveImage}
-              src="/images/detective.png"
-              height={40}
-              width={20}
+              src={detectiveImage}
               alt="A little detective figure"
             />
             <div

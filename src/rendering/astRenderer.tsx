@@ -1,7 +1,7 @@
 import React from "react";
 import { Node, RootContent } from "mdast";
 import styles from "./styles.module.css";
-import { combineClasses, textToSlug } from "@/util";
+import { combineClasses, SITE_URL, textToSlug } from "@/util";
 import Image from "next/image";
 import { ContainerDirective } from "mdast-util-directive";
 import { monospaceFont, sansSerif, serifFont } from "@/fonts";
@@ -206,7 +206,7 @@ export default function AstRenderer(props: AstRendererProps) {
       <div className={styles.imageContainer}>
         <div className={styles.imageAndTitleContainer}>
           <Image
-            src={`/images/${node.url}`}
+            src={`${SITE_URL}images/${node.url}`}
             alt={node.alt}
             width={500}
             height={200}
