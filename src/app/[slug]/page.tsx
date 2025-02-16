@@ -19,8 +19,9 @@ export default function Article() {
   const [content, setContent] = useState(null as Node | null);
   const [scrollY, setScrollY] = useState(0);
   const [scrollingUp, setScrollingUp] = useState(true);
-  const paramsNew = useParams();
   const [annotationId, setAnnotationId] = useState(null as string | null);
+  const [loaded, setLoaded] = useState(false);
+  const paramsNew = useParams();
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -54,17 +55,27 @@ export default function Article() {
 
   useEffect(() => {
     // Get hash from URL
+    setLoaded(true);
     const hash = window.location.hash;
     if (hash) {
-      // Add a small delay to ensure content is rendered
-      setTimeout(() => {
+      if (!loaded) {
+        // Add a small delay to ensure content is rendered
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }, 1000);
+      } else {
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({
             behavior: "smooth",
           });
         }
-      }, 1000);
+      }
     }
   }, [searchParams]);
 

@@ -211,6 +211,7 @@ export default function AstRenderer(props: AstRendererProps) {
             width={500}
             height={200}
             className={styles.image}
+            loading="eager"
           />
           {node.title && (
             <div

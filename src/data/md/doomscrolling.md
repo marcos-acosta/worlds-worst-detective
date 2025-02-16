@@ -118,7 +118,7 @@ And as for riding an untamed horse, you know what? :hook[It's fun to just ride o
 
 :footnote[You may know him as the creator (and voice behind the camera) of [Numberphile](https://www.youtube.com/numberphile).]{id="brady"}
 :footnote[No, I wasn't a hipster in high school, my family is Argentine.]{id="mate"}
-:footnote[Specifically, `Cmd-Tab`, `Cmd-T`, `c`, `Enter` (autocomplete), and then one click from the landing page.]{id="keys"}
+:footnote[Specifically, `Cmd-Tab` followed by `Cmd-T`, `c`, `Enter` (thanks to autocomplete), and then one click from the landing page.]{id="keys"}
 :footnote[I did (and do) let myself play over-the-board, though, that's a different thing.]{id="chess"}
 :footnote[Yeah, yeah, [I'm the problem](https://youtu.be/b1kbLwvqugk?si=p6iD0x4jtS0ORlDC&t=48), etc. etc.]{id="problem"}
 :footnote[It's actually quite poetic that, even in my mind, the 2 can't run without interruption.]{id="2"}
