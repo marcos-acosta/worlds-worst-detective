@@ -1,3 +1,5 @@
+![A thought bubble with an "X" through it](unthinkable/unthinkable.png)
+
 # No dumb questions: Are there unthinkable thoughts?
 
 I recently found myself on a Wikipedia page entitled [List of animals by number of neurons](https://en.wikipedia.org/wiki/List_of_animals_by_number_of_neurons). I was surprised to learn that starfish have about 500 neurons, which is only double the neurons of the microscopic [tardigrade](https://en.wikipedia.org/wiki/Tardigrade). Is that even enough neurons to have a sensation of thought? What _is_ the sensation of thought? In any case, I figured, those poor things will never experience even a fraction of the thoughts that a human can have in the span of a single day. That left me with a nagging question, though.
@@ -15,6 +17,8 @@ So with that said, let's think the unthinkable!
 We're obviously dealing with a very thorny and layered question, but just to start somewhere, let's start with something we've all experienced: experiences. While I don't claim to know the exact relationship between experiences and thoughts, allow me to fulfill my quota of "one controversial opinion per essay" by asserting that there _is_ a relationship. Jokes aside, one could argue that all thoughts are rooted, somehow, in prior experience. Immediately after writing that sentence, I fell down a very deep rabbit hole called "Would a brain that never received any stimulus experience thought?" which I'm just going to have to put aside for now. It's still safe to say that most of your thoughts _draw from_ your experiences, :hook["real"]{id="real"} or imagined.
 
 Let's take an apple, the poster child of thinkable objects. Thinking about an apple is pretty easy. If you're a visual thinker, you can just picture an apple. Visual thinking isn't the only way to go, though. If it was, we'd have to argue that people with [aphantasia](https://en.wikipedia.org/wiki/Aphantasia) can't think of things, which is a loser take. Personally, if you asked me to think of an apple, the experience is more like a vague _concept_ of an apple being brought to the forefront of my mind, primed to answer questions like "what does one taste like?" or "could you build a house out of them?". I've also had plenty of experiences with apples, so it's equally easy to think about apples rolling down hills, people bobbing for apples, and so on.
+
+![An apple](unthinkable/apple.png)
 
 It goes a step further; I've never seen a blue apple, in person or otherwise, but it's just as easy to conceptualize a blue apple. Why? I've seen blue things, and I've seen apples, and I've seen things be different colors, so bada-bing, bada-boom, blue apple.
 
@@ -72,6 +76,8 @@ These higher levels of software make the hardware easier to work with at the exp
 The brain can be understood similarly. The "hardware" of our brain would be our neurons, as well as the laws of physics that govern the chemistry that governs those neurons. Dependent on that, we have various (fuzzy) layers of mental "software". Obviously, these different mental levels of cognition can't be teased apart as easily as the CPU from the motherboard, but some brain functions certainly seem lower-level than others.
 
 For example, there are parts of your brain (notably the brain stem) that are responsible for regulating your heart rate and breathing rate. These are very low-level functions. You can become conscious of your breathing and :hook[choose to hold your breath longer than average]{id="breath"} ("you" referring to the part of your brain responsible for your high-level sense of self and agency), but ultimately, your brain stem has the final say and will take over to prevent you from dying of hypoxia.
+
+![A system message from your brain](unthinkable/brainstem-os.png)
 
 Cutting to the chase: while you can change the software of your brain through conscious thought and experiences, there's also mental hardware, which is much less malleable. Just like you can’t program a regular computer to be a quantum computer, you can’t think your way into, say, conceptualizing the fourth dimension.
 
