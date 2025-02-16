@@ -15,13 +15,14 @@ export default async function generateRssFeed() {
   const feed = new RSS(feedOptions);
 
   POSTS.forEach((post) => {
-    !post.hide &&
+    if (!post.hide) {
       feed.item({
         title: post.title,
         description: post.description,
         url: `${site_url}/${post.url}`,
         date: post.datePublished,
       });
+    }
   });
 
   return feed;

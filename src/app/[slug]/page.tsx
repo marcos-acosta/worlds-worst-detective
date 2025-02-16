@@ -1,7 +1,7 @@
 "use client";
 
 import { Node } from "mdast";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import AstRenderer from "@/rendering/astRenderer";
 import styles from "./blog.module.css";
@@ -31,19 +31,18 @@ export default function Article() {
         mdastExtensions: [directiveFromMarkdown()],
       });
       setContent(tree);
-      console.log(tree);
     }
     fetchPosts();
   }, [paramsNew.slug]);
 
-  const updateScrollDirection = () => {
+  const updateScrollDirection = useCallback(() => {
     setScrollY(window.scrollY);
     if (window.scrollY > scrollY) {
       setScrollingUp(false);
     } else {
       setScrollingUp(true);
     }
-  };
+  }, [scrollY]);
 
   useEffect(() => {
     addEventListener("scroll", updateScrollDirection);
