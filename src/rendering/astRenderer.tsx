@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import { combineClasses, textToSlug } from "@/util";
 import Image from "next/image";
 import { ContainerDirective } from "mdast-util-directive";
-import { monospaceFont, sansSerif, serifFont } from "@/app/page";
+import { monospaceFont, sansSerif, serifFont } from "@/fonts";
 
 interface AstRendererProps {
   root: Node;

@@ -2,33 +2,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { combineClasses, formatDate } from "@/util";
 import { POSTS } from "@/posts";
-import {
-  Bree_Serif,
-  JetBrains_Mono,
-  Roboto,
-  Xanh_Mono,
-} from "next/font/google";
 import Image from "next/image";
-
-export const xanh_mono = Xanh_Mono({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-export const monospaceFont = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-export const serifFont = Bree_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-export const sansSerif = Roboto({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import { monospaceFont, titleFont } from "@/fonts";
 
 export default function Homepage() {
   return (
@@ -55,7 +30,7 @@ export default function Homepage() {
             />
             <div
               className={combineClasses(
-                xanh_mono.className,
+                titleFont.className,
                 styles.detectiveTitle
               )}
             >

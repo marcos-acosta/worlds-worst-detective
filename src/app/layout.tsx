@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import { Alegreya } from "next/font/google";
 import "./globals.css";
-
-export const bodyFont = Alegreya({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import { bodyFont } from "@/fonts";
 
 export const metadata: Metadata = {
   title: "World's Worst Detective",

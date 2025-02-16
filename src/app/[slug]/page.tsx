@@ -10,9 +10,9 @@ import { directiveFromMarkdown } from "mdast-util-directive";
 import { useParams } from "next/navigation";
 import { combineClasses } from "@/util";
 import Image from "next/image";
-import { xanh_mono } from "../page";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { titleFont } from "@/fonts";
 
 export default function Article() {
   const [content, setContent] = useState(null as Node | null);
@@ -88,7 +88,7 @@ export default function Article() {
               alt="A little detective figure"
             />
             <div
-              className={combineClasses(styles.headerText, xanh_mono.className)}
+              className={combineClasses(styles.headerText, titleFont.className)}
             >
               world&apos;s worst detective
             </div>
