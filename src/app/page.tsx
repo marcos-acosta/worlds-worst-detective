@@ -35,6 +35,16 @@ export default function Homepage() {
     <div className={styles.homepageContainer}>
       <div className={styles.homepageContent}>
         <div>
+          <div className={styles.socialContainer}>
+            <Link href="/rss.xml">
+              <Image
+                src="/images/rss.png"
+                width={25}
+                height={25}
+                alt="The RSS symbol"
+              />
+            </Link>
+          </div>
           <div className={styles.detectiveHeader}>
             <Image
               src="/images/detective.png"
