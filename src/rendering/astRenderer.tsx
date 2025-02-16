@@ -226,7 +226,7 @@ export default function AstRenderer(props: AstRendererProps) {
   const wrapChildren = (node: Node, child: JSX.Element) => {
     const type = node.type;
     if (!type) {
-      return child;
+      return <span>{child}</span>;
     }
     switch (type) {
       case "heading":
@@ -266,7 +266,7 @@ export default function AstRenderer(props: AstRendererProps) {
       case "containerDirective":
         return wrapContainerDirective(node as ContainerDirective, child);
       default:
-        return child;
+        return <span>{child}</span>;
     }
   };
 
@@ -287,7 +287,7 @@ export default function AstRenderer(props: AstRendererProps) {
 
   const getChildren = (node: Node) => {
     return "value" in node ? (
-      <>{treatTrailingSpaces(node.value as string)}</>
+      <span>{treatTrailingSpaces(node.value as string)}</span>
     ) : "children" in node ? (
       renderChildren(node.children as RootContent[])
     ) : (
