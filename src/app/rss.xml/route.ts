@@ -1,4 +1,4 @@
-import { POSTS } from "@/posts";
+import { POSTS, sortPosts } from "@/posts";
 import RSS from "rss";
 
 async function generateRssFeed() {
@@ -14,7 +14,7 @@ async function generateRssFeed() {
 
   const feed = new RSS(feedOptions);
 
-  POSTS.forEach((post) => {
+  sortPosts(POSTS).forEach((post) => {
     if (!post.hide) {
       feed.item({
         title: post.title,

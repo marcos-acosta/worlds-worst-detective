@@ -26,9 +26,14 @@ export const POSTS: PostData[] = [
   {
     title: "No dumb questions: Are there unthinkable thoughts?",
     url: "unthinkable-thoughts",
-    datePublished: makeDateLocalTime(2025, 2, 15),
-    hide: true,
+    datePublished: makeDateLocalTime(2025, 2, 16),
     description:
       "Starfish will never do math. For that matter, monkeys aren't that great at it either. Are there limits to humans' capacity for thought?",
   },
 ];
+
+export const sortPosts = (posts: PostData[]) =>
+  posts.sort(
+    (postA, postB) =>
+      postB.datePublished.valueOf() - postA.datePublished.valueOf()
+  );

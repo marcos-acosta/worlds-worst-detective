@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { combineClasses, formatDate } from "@/util";
-import { POSTS } from "@/posts";
+import { POSTS, sortPosts } from "@/posts";
 import Image from "next/image";
 import { monospaceFont, titleFont } from "@/fonts";
 import rssImage from "./../../public/images/rss.png";
@@ -63,10 +63,7 @@ export default function Homepage() {
             </p>
           </div>
           <div className={styles.articleList}>
-            {POSTS.sort(
-              (postA, postB) =>
-                postB.datePublished.valueOf() - postA.datePublished.valueOf()
-            ).map(
+            {sortPosts(POSTS).map(
               (postData) =>
                 !postData.hide && (
                   <div key={postData.url} className={styles.postEntry}>

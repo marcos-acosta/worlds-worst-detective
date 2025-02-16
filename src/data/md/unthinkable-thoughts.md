@@ -101,6 +101,8 @@ Here's another fact: a line has 2 sides, a square has 4, and a cube has 6 faces,
 
 One more: if you picked two endpoints of a line (there’s only one choice), they would be separated by one edge, namely, the line itself. On a square, the most edges you could find between any two vertices is two. On a cube, that number is three. Consequently, on a tesseract, the most number of edges separating two vertices would be four.
 
+![A side-by-side comparison of a line, square, cube, and hypercube](unthinkable/4d.png "Note that the tesseract shown here is a 3d projection of a 4d object")
+
 Surely, given all this information, you could picture a tesseract in all its four-dimensional glory?
 
 Clearly, no amount of describing the properties of a fourth spatial dimension would enable us to _actually_ conceptualize it with the same level of vividness that we can grasp the third dimension. Although some people have dedicated a lot of time to the pursuit of fourth-dimensional intuition, I would argue that these people are dancing _around_ four-dimensional thoughts, as closely as possible without actually experiencing it. You could, like I just did, read through the [Wikipedia page for Tesseract](https://en.wikipedia.org/wiki/Tesseract) and go like "uh huh, yep, makes sense", but actual four-dimensional thoughts would still remain just out of reach.
@@ -116,6 +118,8 @@ This is categorically different from things like cows jumping over the moon, whi
 I'd like to call your attention to a wonderful little principle called the pigeonhole principle. If you're not aware of it, this is essentially what it says:
 
 > **Pigeonhole principle**: Imagine you have `N` things and `M` containers. If `N > M`, then at least one container will have more than one thing in it. Similarly, if `N < M`, then at least one container will have no things in it.
+
+![An illustration of the pigeonhole principle](unthinkable/pigeonhole.png)
 
 You could prove this fact from first principles, but there's really no need, since it's so obviously _true_. With this simple principle, you can prove that there must be two people in London who have the same number of hairs on their head, or that, in a situation where people are shaking hands, there will always be at least two people who have :hook[shaken the same number of hands]{id="shake"}.
 
