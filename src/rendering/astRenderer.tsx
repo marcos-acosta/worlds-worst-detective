@@ -78,10 +78,7 @@ export default function AstRenderer(props: AstRendererProps) {
             <span
               role="button"
               onClick={() => clickLink(slug)}
-              className={combineClasses(
-                "material-symbols-outlined",
-                styles.linkButton
-              )}
+              className={combineClasses("link-icon", styles.linkButton)}
             >
               link
             </span>
@@ -217,9 +214,7 @@ export default function AstRenderer(props: AstRendererProps) {
             <div
               className={combineClasses(styles.imageTitle, sansSerif.className)}
             >
-              <span className="material-symbols-outlined">
-                switch_access_shortcut
-              </span>
+              <span className="arrow-icon">switch_access_shortcut</span>
               {node.title}
             </div>
           )}
