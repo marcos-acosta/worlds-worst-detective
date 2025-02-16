@@ -1,7 +1,7 @@
 import { POSTS } from "@/posts";
 import RSS from "rss";
 
-export default async function generateRssFeed() {
+async function generateRssFeed() {
   const site_url = "https://worldsworstdetective.com";
 
   const feedOptions = {
@@ -27,6 +27,7 @@ export default async function generateRssFeed() {
 
   return feed;
 }
+
 export async function GET() {
   const rss = await generateRssFeed();
   const xml = rss.xml();
