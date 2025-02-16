@@ -22,9 +22,14 @@ export default function Article() {
   const [annotationId, setAnnotationId] = useState(null as string | null);
   const searchParams = useSearchParams();
 
+  const siteUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3001/"
+      : "https://worldsworstdetective.com/";
+
   useEffect(() => {
     async function fetchPosts() {
-      const res = await fetch(`http://localhost:3001/api/${paramsNew.slug}`);
+      const res = await fetch(`${siteUrl}api/${paramsNew.slug}`);
       const data = await res.json();
       const tree = fromMarkdown(data.contents, {
         extensions: [directive()],
