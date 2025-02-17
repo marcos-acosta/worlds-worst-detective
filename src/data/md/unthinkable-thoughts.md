@@ -12,6 +12,18 @@ Call me overconfident, but I have more faith in humans. With our self-awareness 
 
 So with that said, let's think the unthinkable!
 
+## First thoughts
+
+I asked a few people this question and the first thing that usually came up were thoughts that are so unspeakably terrible that our brain resists our attempts to think them. After all, that's the typical meaning of the word "unthinkable". But for something that's supposedly unthinkable, these kinds of thoughts seem rather... I don't know, thinkable?
+
+Moving on, another popular topic was language, and for good reason. Language symbolizes our thoughts in a very deep way; there's a pretty well-researched effect that the language you use affects [the way you perceive the world](https://www.researchgate.net/publication/273286375_Two_Languages_Two_Minds). In the study I linked, researchers found that participants would describe the same event differently depending on the grammatical constraints of the language they used (in this case, English or German).
+
+So are "German thoughts" unthinkable to a non-German speaker?
+
+The more you think about this, the less tractable it gets. For one thing, I'm sure the variation _within_ groups is smaller than the variation _between_ them; in other words, if you could somehow measure the average "similarity in thought" between an Anglophone and a Germanophone, you could find two English speakers whose thought patterns are much more dissimilar.
+
+But to me, this line of reasoning leads to a pretty reductionist conclusion: that _every one else's_ thoughts are "unthinkable" because the only way to truly experience their exact sensation of thought would be to have their same brain and memories. This isn't very interesting because it's more "unknowable" than "unthinkable". Rather than fall down the rabbit hole / dead end that is the [hard problem of consciousness](https://en.wikipedia.org/wiki/Hard_problem_of_consciousness), let's take a step back and think more holistically for a second.
+
 ## Thought and experience
 
 We're obviously dealing with a very thorny and layered question, but just to start somewhere, let's start with something we've all experienced: experiences. While I don't claim to know the exact relationship between experiences and thoughts, allow me to fulfill my quota of "one controversial opinion per essay" by asserting that there _is_ a relationship. Jokes aside, one could argue that all thoughts are rooted, somehow, in prior experience. Immediately after writing that sentence, I fell down a very deep rabbit hole called "Would a brain that never received any stimulus experience thought?" which I'm just going to have to put aside for now. It's still safe to say that most of your thoughts _draw from_ your experiences, :hook["real"]{id="real"} or imagined.
@@ -67,11 +79,11 @@ That sums up _one_ potential answer to the question of, "Are there unthinkable t
 
 ## Brain software and hardware
 
-Most computers we’re familiar with have both hardware and software. The hardware includes the physical components that literally make up the computer, like the CPU, RAM, disk, motherboard, and peripherals like the monitor and speakers. We can also write out sets of instructions, or programs, that tell the hardware what to do. These programs constitute the software of the computer. In this way, two computers with the same hardware can be programmed to do extremely different things.
+Most computers we're familiar with have both hardware and software. The hardware includes the physical components that literally make up the computer, like the CPU, RAM, disk, motherboard, and peripherals like the monitor and speakers. We can also write out sets of instructions, or programs, that tell the hardware what to do. These programs constitute the software of the computer. In this way, two computers with the same hardware can be programmed to do extremely different things.
 
-In addition to distinguishing between hardware and software, you could identify multiple _layers_ of software in a computer, ranging from "low-level" (close to the hardware) to "high-level" (abstracted from the hardware). The lowest layer would probably be the assembler, which turns :hook[assembly language]{id="assembly"} into `1`s and `0`s that the CPU can execute. The next lowest level software above that would be the compiler, which turns human-readable code into assembly, and somewhere above that, we’d find the operating system, which is the most user-friendly way to interface with the computer.
+In addition to distinguishing between hardware and software, you could identify multiple _layers_ of software in a computer, ranging from "low-level" (close to the hardware) to "high-level" (abstracted from the hardware). The lowest layer would probably be the assembler, which turns :hook[assembly language]{id="assembly"} into `1`s and `0`s that the CPU can execute. The next lowest level software above that would be the compiler, which turns human-readable code into assembly, and somewhere above that, we'd find the operating system, which is the most user-friendly way to interface with the computer.
 
-These higher levels of software make the hardware easier to work with at the expense of flexibility. For example, the operating system won’t let you write so many files that you overwrite the memory containing the instructions for the operating system itself, even though the hardware technically permits it.
+These higher levels of software make the hardware easier to work with at the expense of flexibility. For example, the operating system won't let you write so many files that you overwrite the memory containing the instructions for the operating system itself, even though the hardware technically permits it.
 
 The brain can be understood similarly. The "hardware" of our brain would be our neurons, as well as the laws of physics that govern the chemistry that governs those neurons. Dependent on that, we have various (fuzzy) layers of mental "software". Obviously, these different mental levels of cognition can't be teased apart as easily as the CPU from the motherboard, but some brain functions certainly seem lower-level than others.
 
@@ -79,7 +91,7 @@ For example, there are parts of your brain (notably the brain stem) that are res
 
 ![A system message from your brain](unthinkable/brainstem-os.png)
 
-Cutting to the chase: while you can change the software of your brain through conscious thought and experiences, there's also mental hardware, which is much less malleable. Just like you can’t program a regular computer to be a quantum computer, you can’t think your way into, say, conceptualizing the fourth dimension.
+Cutting to the chase: while you can change the software of your brain through conscious thought and experiences, there's also mental hardware, which is much less malleable. Just like you can't program a regular computer to be a quantum computer, you can't think your way into, say, conceptualizing the fourth dimension.
 
 Let's elaborate on that.
 
@@ -91,7 +103,7 @@ So, if we've never seen every side of an object at once, why do we experience th
 
 #### Picturing the fourth dimension
 
-We can actually learn a lot of things about the fourth dimension just by making connections between lower dimensions. I’ll go through a few of them.
+We can actually learn a lot of things about the fourth dimension just by making connections between lower dimensions. I'll go through a few of them.
 
 As three dimensional beings, we can look at a 2D object and see _all_ its sides at once, including the inside of the object. It's all "laid out in front of us". In our three-dimensional world, a single viewpoint is restricted to seeing at most half of an object at a time, and the inside is hidden from view. In the fourth dimension, then, we could look at a 3D object and easily see _all_ of its sides at once, as well as its contents. Picture a box in front of you, with things inside. If you were a fourth-dimensional being, you could see all six sides of the box, as well as the contents of the box. You could also see every side of each item in the box, and their insides. It would all be laid out in front of you.
 
@@ -99,7 +111,7 @@ We can discover some additional details by generalizing familiar geometry. For i
 
 Here's another fact: a line has 2 sides, a square has 4, and a cube has 6 faces, so a tesseract would have 8 "faces", or _cells_ (as they're called).
 
-One more: if you picked two endpoints of a line (there’s only one choice), they would be separated by one edge, namely, the line itself. On a square, the most edges you could find between any two vertices is two. On a cube, that number is three. Consequently, on a tesseract, the most number of edges separating two vertices would be four.
+One more: if you picked two endpoints of a line (there's only one choice), they would be separated by one edge, namely, the line itself. On a square, the most edges you could find between any two vertices is two. On a cube, that number is three. Consequently, on a tesseract, the most number of edges separating two vertices would be four.
 
 ![A side-by-side comparison of a line, square, cube, and hypercube](unthinkable/4d.png "Note that the tesseract shown here is a 3d projection of a 4d object")
 
@@ -133,7 +145,7 @@ That's definitely a morale booster, and could be taken to mean that humans "won 
 
 ### Adding and multiplying
 
-In my [formal systems](https://worldsworstdetective.com/formal-systems) essay, I made a passing comment about how, although we have a pretty much perfect understanding of addition and multiplication by themselves, we don’t yet fully understand how they interact with each other. This gets at my meaning of the word "understand".
+In my [formal systems](https://worldsworstdetective.com/formal-systems) essay, I made a passing comment about how, although we have a pretty much perfect understanding of addition and multiplication by themselves, we don't yet fully understand how they interact with each other. This gets at my meaning of the word "understand".
 
 > **Levels of understanding of addition and multiplication**
 >
@@ -141,9 +153,9 @@ In my [formal systems](https://worldsworstdetective.com/formal-systems) essay, I
 > - **Medium understanding**: Know how to check whether a number is prime.
 > - **Advanced understanding**: Explain why every number greater than 1 has a unique prime factorization, and why there are an infinite number of primes.
 > - **Very advanced understanding**: Explain why there are no integer solutions to the equation `a^n + b^n = c^n` when `n >= 2` ([Fermat's Last Theorem](https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem)).
-> - **Not yet understood**: Explain why there are (or aren't) infinitely many [twin primes](https://en.wikipedia.org/wiki/Twin_prime#Twin_prime_conjecture), or why every even number can(’t) be [expressed as the sum of two primes](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture), or why there are(n’t) [odd perfect numbers](https://en.wikipedia.org/wiki/Perfect_number#Odd_perfect_numbers), or why (not) every positive integer yields 1 after sufficient applications of the [Collatz rule](https://en.wikipedia.org/wiki/Collatz_conjecture).
+> - **Not yet understood**: Explain why there are (or aren't) infinitely many [twin primes](https://en.wikipedia.org/wiki/Twin_prime#Twin_prime_conjecture), or why every even number can('t) be [expressed as the sum of two primes](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture), or why there are(n't) [odd perfect numbers](https://en.wikipedia.org/wiki/Perfect_number#Odd_perfect_numbers), or why (not) every positive integer yields 1 after sufficient applications of the [Collatz rule](https://en.wikipedia.org/wiki/Collatz_conjecture).
 
-Who would’ve guessed there could be so much mystery surrounding the interaction of addition and multiplication? Just to illustrate the point, consider the fact that Fermat's Last Theorem was asserted in 1637, but wasn't proven until _358 years later_ by Andrew Wiles in 1994. Some of the mathematical results Wiles used to construct his proof weren't even discovered until the 1980s (speaking of the "speed of thought").
+Who would've guessed there could be so much mystery surrounding the interaction of addition and multiplication? Just to illustrate the point, consider the fact that Fermat's Last Theorem was asserted in 1637, but wasn't proven until _358 years later_ by Andrew Wiles in 1994. Some of the mathematical results Wiles used to construct his proof weren't even discovered until the 1980s (speaking of the "speed of thought").
 
 With that in mind, it feels very possible that we've already proposed conjectures that won't be proven for a _thousand_ years. But what about the extreme? Are there "simple seeming" facts about numbers that we'll never be able to determine?
 
@@ -180,7 +192,7 @@ I don't know about you, but looking at stuff like this really makes me awe-struc
 
 So, shall we get on with finding BB(6)? Well, I'm not sure we even have a _word_ that describes how much harder BB(6) is compared to BB(5). To quote from the Quanta article:
 
-> Meanwhile, part of the team has moved on to the next beaver. But just four days ago, [two contributors] discovered a barrier for BB(6) that seems insurmountable: a six-rule machine whose halting problem resembles a famously intractable math problem called the Collatz conjecture. [...] "It’s conceivable that this is the last busy beaver number that we will ever know."
+> Meanwhile, part of the team has moved on to the next beaver. But just four days ago, [two contributors] discovered a barrier for BB(6) that seems insurmountable: a six-rule machine whose halting problem resembles a famously intractable math problem called the Collatz conjecture. [...] "It's conceivable that this is the last busy beaver number that we will ever know."
 
 For that matter, it's been proved that solving BB(27) is as hard as another famously unsolved problem called the [Goldbach conjecture](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture) (which was mentioned in passing earlier), and that finding `B(744)` would be as hard as proving the [Riemann Hypothesis](https://en.wikipedia.org/wiki/Riemann_hypothesis), widely considered to be the "Holy Grail of Mathematics".
 
