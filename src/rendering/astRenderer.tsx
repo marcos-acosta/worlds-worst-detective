@@ -28,7 +28,6 @@ interface ImageNode extends Node {
 }
 
 const treatTrailingSpaces = (str: string) => {
-  // return str.trim();
   const startsWithSpace = str.startsWith(" ");
   const endsWithSpace = str.endsWith(" ");
   const trimmed = str.trim();
@@ -288,7 +287,7 @@ export default function AstRenderer(props: AstRendererProps) {
 
   const getChildren = (node: Node) => {
     return "value" in node ? (
-      <>{treatTrailingSpaces(node.value as string)}</>
+      treatTrailingSpaces(node.value as string)
     ) : "children" in node ? (
       renderChildren(node.children as RootContent[])
     ) : (

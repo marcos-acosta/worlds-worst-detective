@@ -2,12 +2,17 @@
   cursor: inherit;
 }
 
-.paragraph span {
-  display: inline-block;
+.text {
+  display: inline flow;
+}
+
+.paragraph a {
+  display: inline flow;
 }
 
 .emphasis {
   font-style: italic;
+  display: inline-block;
 }
 
 .strong {
@@ -16,7 +21,6 @@
 
 .paragraph {
   margin-bottom: 20px;
-  white-space: pre-wrap;
 }
 
 .paragraph:last-child {
