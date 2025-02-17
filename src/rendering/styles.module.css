@@ -2,17 +2,13 @@
   cursor: inherit;
 }
 
-.text {
-  display: inline flow;
-}
-
-.paragraph a {
-  display: inline flow;
+.paragraph span::before,
+.paragraph span::after {
+  content: "\200B";
 }
 
 .emphasis {
   font-style: italic;
-  /* display: inline-block; */
 }
 
 .strong {
