@@ -12,7 +12,7 @@
 
 .emphasis {
   font-style: italic;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .strong {

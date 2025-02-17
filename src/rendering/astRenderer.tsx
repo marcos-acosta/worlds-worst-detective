@@ -33,9 +33,9 @@ const treatTrailingSpaces = (str: string) => {
   const trimmed = str.trim();
   return (
     <>
-      {startsWithSpace ? <>&nbsp;</> : ""}
+      {startsWithSpace ? <span>&nbsp;</span> : ""}
       {trimmed}
-      {endsWithSpace ? <>&nbsp;</> : ""}
+      {endsWithSpace ? <span>&nbsp;</span> : ""}
     </>
   );
 };
