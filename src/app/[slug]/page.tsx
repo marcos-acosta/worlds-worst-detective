@@ -39,10 +39,10 @@ export default function Article() {
 
   const updateScrollDirection = useCallback(() => {
     setScrollY(window.scrollY);
-    if (window.scrollY > scrollY) {
-      setScrollingUp(false);
-    } else {
+    if (window.scrollY < 50 || window.scrollY <= scrollY) {
       setScrollingUp(true);
+    } else {
+      setScrollingUp(false);
     }
   }, [scrollY]);
 

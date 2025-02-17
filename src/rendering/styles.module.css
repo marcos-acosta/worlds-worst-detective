@@ -145,6 +145,7 @@ li .paragraph {
   color: #faf9f6;
   font-size: 0.9em;
   border-radius: 5px;
+  white-space: pre-wrap;
 }
 
 .imageContainer {
