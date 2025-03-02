@@ -304,7 +304,7 @@ At this point, you may be wondering what you’re supposed to take away from all
 
 That’s about it. I intentionally didn’t touch some of the juiciest content which comes up when we connect number theory to formal systems. That’s because I wanted this article to be purely exploratory; something I can point folks to as background for more niche topics.
 
-But really, more so than any of those takeaways I proposed, I wanted to capture the feeling of looking at something as simple as 1+1=2 and questioning to what extent it represents the real world. The fact that physics works at all would suggest that the universe really is pretty isomorphic to symbols on a page. And I hope you find this as awesome and unsettling as I do. ∎
+But really, more so than any of those takeaways I proposed, I wanted to capture the feeling of looking at something as simple as 1+1=2 and questioning to what extent it represents the real world. The fact that physics works at all would suggest that the universe really is pretty isomorphic to symbols on a page. And I hope you find this as awesome and unsettling as I do. ■
 
 :footnote[In this case, I'm intentionally excluding zero for simplicity's sake, but we could easily modify the P-Q System to include it. For example, we could start with Axiom 1 as `pq` to represent 0+0=0. Alternatively, we could just change our _interpretation_. i.e. We could say that for the first two hyphen groups, one hyphen means "zero", two hyphens means "one", etc. To the right of the `q`, two hyphens means "zero", three hyphens means "one", etc.]{id="nat-nums"}
 :footnote[Well, I guess we don't _have_ to, but I do.]{id="have-to"}

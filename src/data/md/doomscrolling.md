@@ -110,7 +110,7 @@ I somewhat suspect that instead of my "stamina for conscious work" having decrea
 
 Recently, I've been working on being more forgiving with myself, and becoming less obsessed with labeling everything as either a "distraction" or "not a distraction". For example, when a random thought pops into my head, I'll sometimes let myself crack open the Wikipedia page and take a look, but I try to be sensitive to the moment when the fun vanishes and the doom sets in, at which point I'll close the tabs and take a moment to reset.
 
-And as for riding an untamed horse, you know what? :hook[It's fun to just ride one]{id="horse"} every once in a while. Like that time I spent three days writing a rulebook for a new sport? What's funny is that I remember being so preoccupied with all the obligations that I let drop, but I can't remember a single one of those obligations now. Did any of them actually matter? What I do remember now is how much fun we had playing Omegaball. ∎
+And as for riding an untamed horse, you know what? :hook[It's fun to just ride one]{id="horse"} every once in a while. Like that time I spent three days writing a rulebook for a new sport? What's funny is that I remember being so preoccupied with all the obligations that I let drop, but I can't remember a single one of those obligations now. Did any of them actually matter? What I do remember now is how much fun we had playing Omegaball. ■
 
 ![My friends playing omegaball](doomscrolling/omegaball.png "Trenton makes an Omega pass under pressure from Henry")
 

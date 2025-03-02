@@ -6,7 +6,8 @@ async function generateRssFeed() {
 
   const feedOptions = {
     title: "World's Worst Dective",
-    description: "???",
+    description:
+      "Illustrated investigations into whatever dumb question needs immediate attention.",
     site_url: site_url,
     feed_url: `${site_url}/rss.xml`,
     image_url: `${site_url}/detective.png`,

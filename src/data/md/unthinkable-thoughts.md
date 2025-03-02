@@ -210,7 +210,7 @@ I think higher levels of understanding unlock previously impossible, more abstra
 
 Thus concludes my answer to the question of "Are there thoughts that can't be thunk?". Because of the way _my_ brain is wired, this essay turned out more technical than I was initially going for, mostly because I had a hard time convincing myself that other non-technical thoughts had any real limitations that could be described with any level of precision.
 
-To be optimistic, though, the fact that it was so damn difficult to write a compelling argument for any (interesting) limitation of the brain is uplifting in its own way. Don't overthink it. ∎
+To be optimistic, though, the fact that it was so damn difficult to write a compelling argument for any (interesting) limitation of the brain is uplifting in its own way. Don't overthink it. ■
 
 :footnote[I'm putting "real" in quotes because, in the context of our perception, everything is subjective. There's no separate compartments in your brain for the stuff that "really" happened and the stuff you read in books or saw in movies. Sometimes it's hard to tell them apart.]{id="real"}
 :footnote[Just like my previous footnote, there's no real distinction between possible and impossible experiences because of fiction (or hallucinogens), but that's the point, really.]{id="possibly-experience"}
