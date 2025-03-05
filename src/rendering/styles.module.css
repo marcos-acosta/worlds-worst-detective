@@ -178,7 +178,7 @@ li .paragraph {
   display: flex;
   flex-shrink: 1;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
 }
 
 .linkButton {

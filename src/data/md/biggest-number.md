@@ -277,7 +277,7 @@ Thanks, George. Also, saying that the study of large numbers is useless because 
 
 ### The abstraction dojo
 
-![A physical pendulum being abstracted to an ideal pendulum being abstracted to a formula](biggest-number/abstraction.png)
+![A physical pendulum being abstracted to an ideal pendulum being abstracted to a formula](biggest-number/pendulum.png)
 
 To me, googology is like a dojo where one's capacity for _abstraction_ is pushed to its limits. I very quickly ran into my _own_ limits for abstraction when trying to intuitively understand Conway's chained arrow notation for chains of four or more arrows. The definition itself was simple enough, and I was able to work through a few examples with four arrows. But I still wasn't able to :hook[grok]{id="grok"} it; I didn't fully see what the chained arrows were supposed to _represent_ in the same way that I deeply understand what addition, multiplication, and exponentiation represent.
 
