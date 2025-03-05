@@ -2,9 +2,13 @@
   cursor: inherit;
 }
 
-.paragraph span::before,
+/* .paragraph span::before,
 .paragraph span::after {
   content: "\200B";
+} */
+
+.paragraph span {
+  white-space: pre-wrap;
 }
 
 .emphasis {

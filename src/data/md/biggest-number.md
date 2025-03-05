@@ -68,9 +68,9 @@ In this case, we noticed that the `+` operation could be performed any number of
 
 ## Repeated addition (multiplication)
 
-So, with `f(n) = n`, we might notice that the function only spits out a single copy of `n`. Why not two copies? That would correspond to `f'(n) = 2n`. What about three copies of `n`? That gets us `f''(n) = 3n`. Whereas `f(10)` gave us a measly `10`, `f''(n)` gets us 30.
+So, with `f(n) = n`, we might notice that the function only spits out a single copy of `n`. Why not two copies? That would correspond to `f'(n) = 2n`. What about three copies of `n`? That gets us `f''(n) = 3n`. Whereas `f(10)` gave us a measly `10`, `f''(n)` gets us 30. But of course, we could keep going, with `4n`, `5n`, and so on.
 
-As you probably noticed, the Cookie Clicker Principle is calling our name. The number of copies of `n` could be increased arbitrarily, so why not generalize that idea? We _could_ use a new variable like `m`, but just to keep things simple, we'll be environmentally friendly and reuse the same `n` to produce our next fast-growing function:
+This brings us back to the Cookie Clicker Principle. The number of copies of `n` could be increased arbitrarily, so why not generalize that idea? We _could_ use a new variable like `m`, but just to keep things simple, we'll be environmentally friendly and reuse the same `n` to produce our next fast-growing function:
 
 ```
 g(n) = n+n+...+n+n (n times) = n*n

@@ -27,19 +27,6 @@ interface ImageNode extends Node {
   title?: string;
 }
 
-const treatTrailingSpaces = (str: string) => {
-  const startsWithSpace = str.startsWith(" ");
-  const endsWithSpace = str.endsWith(" ");
-  const trimmed = str.trim();
-  return (
-    <>
-      {startsWithSpace ? <span>&nbsp;</span> : ""}
-      {trimmed}
-      {endsWithSpace ? <span>&nbsp;</span> : ""}
-    </>
-  );
-};
-
 const extractSlugFromHeaderNode = (headerNode: Node) => {
   if ("children" in headerNode) {
     const textNode = headerNode.children as RootContent[];
@@ -287,7 +274,7 @@ export default function AstRenderer(props: AstRendererProps) {
 
   const getChildren = (node: Node) => {
     return "value" in node ? (
-      treatTrailingSpaces(node.value as string)
+      <>{node.value as string}</>
     ) : "children" in node ? (
       renderChildren(node.children as RootContent[])
     ) : (
