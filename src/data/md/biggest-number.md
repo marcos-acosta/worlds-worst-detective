@@ -49,7 +49,7 @@ If you've ever seen a movie where an ambitious protagonist wants to become the g
 Consider the number `1`. We can add one to that and get `1+1`, which represents a bigger number (namely, `2`). Add another one and we get `1+1+1`, or `3`. We could keep adding one forever, which clues us into the fact that we can _generalize_ this process. Instead of adding five ones, or ten ones, or a hundred ones, we can summarize the _act_ of summing _any number_ of ones together. Without any further ado, I'm pleased to present you with our first "fast"-growing function:
 
 ```
-f(n) = 1+1+...+1+1 (n times) = n*n
+f(n) = 1+1+...+1+1 (n times) = n
 ```
 
 Okay, I know what you're thinking.
