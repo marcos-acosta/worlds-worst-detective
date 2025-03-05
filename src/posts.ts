@@ -33,9 +33,9 @@ export const POSTS: PostData[] = [
   {
     title: "No dumb questions: What's the biggest number?",
     url: "biggest-number",
-    datePublished: makeDateLocalTime(2025, 3, 1),
+    datePublished: makeDateLocalTime(2025, 3, 5),
     description:
-      "Every child has wondered the answer this question. Is it a million? A billion? Infinity? Infinity plus one?",
+      "Is it a million? A billion? Infinity? Infinity plus one? We'll get to the bottom of it.",
   },
 ];
 
