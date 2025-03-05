@@ -80,7 +80,7 @@ Now, with that same input of `10`, the `g` function gives us a crisp `100`. That
 
 ## Repeated multiplication (exponentiaion)
 
-But, we notice that we arbitrarily chose to multiply `n` by itself only once. Why not multiply `n` by itself twice? Or three times? That would correspond to `g'(n) = n*n*n`, `g''(n) = n*n*n*n`, etc. Well, well, well, we've walked straight into the Cookie Clicker Principle again. So, let's use a different notation to represent the idea "multiply `n` by itself any number of times". In keeping with the pattern, we'll just reuse the same `n`.
+But, we notice that we arbitrarily chose to multiply `n` by itself only once. Why not multiply `n` by itself twice? Or three times? That would correspond to `g'(n) = n*n*n`, `g''(n) = n*n*n*n`, etc. Well, well, well, we've walked straight into the Cookie Clicker Principle again. So, let's use a different notation to represent the idea of multiplying `n` by itself any number of times. In keeping with the pattern, we'll just reuse the same `n`.
 
 ```
 h(n) = n*n*...*n*n (n times) = n^n
@@ -106,7 +106,7 @@ Computer pioneer and [TeX](https://en.wikipedia.org/wiki/TeX) inventor [Donald E
 
 One arrow (`↑`) means repeated multiplication, a.k.a. exponentiation. So `2↑3` means "multiply together three copies of two" which becomes `2*2*2 = 2^3 = 8`.
 
-Two arrows (`↑↑`) means repeated _exponentiation_. So, `2↑↑3` would represent `(2^(2^2))`, which is `16`. The cute name of a stack of exponents like that is a "power tower".
+Two arrows (`↑↑`) means repeated _exponentiation_. So, `2↑↑3` would represent `(2^(2^2))`, which is `16`. The cute name for a stack of exponents like that is a "power tower".
 
 Keeping with the pattern, _three_ arrows means repeated double-arrowing, so `2↑↑↑3` means:
 
@@ -154,17 +154,35 @@ But in the grand scheme of things, what's a universe-scale power tower? There's 
 
 ## Forbidden functions
 
-Actually, it turns out that we mortals are (probably) forbidden from constructing the _fastest_-growing functions. Why? To understand that, we need to understand the difference between _computable_ and _uncomputable_ functions.
+Actually, it turns out that we mortals are forbidden from constructing the _fastest_-growing functions. Why? To understand that, we need to understand the difference between _computable_ and _uncomputable_ functions.
 
-In broad terms, a computable function is one that could be run by an algorithm (a little circular, I know). By "algorithm", we informally mean "a step-by-step process", but the Turing machine is usually the gold standard for algorithms, since it's so well-studied. If you're not familiar with Turing machines, I always like to recommend [this Quanta article](https://www.quantamagazine.org/alan-turings-most-important-machine-was-never-built-20230503/).
+In broad terms, a computable function is one that could be run by an algorithm (a little circular, I know). By "algorithm", we informally mean "a step-by-step process". Formally, that "step-by-step process" is usually a well-studied model of computation, the most famous example being the Turing machine. If you're not familiar with Turing machines, I always like to recommend [this Quanta article](https://www.quantamagazine.org/alan-turings-most-important-machine-was-never-built-20230503/). If you're in a "TL;DR" mood, then (a) I'm surprised you made it this far, and (b) if you just know the vibe of a Turing machine, you'll still probably get the gist of this section.
 
-To make things more concrete, consider a function that multiplies an input by two. Even if you're not an algorithms person, you could probably guess that this function is super computable. A slightly more complicated function would be one that computes the `n`th prime. That is, `p(1) = 2`, `p(2) = 3`, `p(3) = 5`, `p(10) = 29` et cetera.
+Let's consider a specific function: a function that adds two to an input. Even if you're not an algorithms person, you could probably guess that this function is super computable. In Python, we would just write:
 
-Considering how much mystery and intrigue surrounds the primes, one might guess that this function wouldn't be computable, but it is. In plain English, the algorithm could :hook[look like this]{id="sqrt"}:
+```
+def add_two(n):
+  return n + 2
+```
+
+The Turing machine would be similarly simple. I sketched it out below, in case you were curious:
+
+> `ADD_TWO` (Turing machine)
+>
+> Assume the input is represented as `n` `1`s on the tape (otherwise `0`), and the Turing machine head starts at the leftmost `1`. Also assume the Turing machine starts in state `S0`.
+>
+> - When reading `1` in state `S0`: Move right, remain in state `S0`
+> - When reading `0` in state `S0`: Write a `1`, move right, switch to state `S1`
+> - When in state `S1`: Write a `1` and switch to the `HALT` state (terminate).
+
+When the Turing machine terminates, it will have left `n + 2` `1`s on the tape.
+
+A slightly more complicated function would be one that computes the `n`th prime. That is, `p(1) = 2`, `p(2) = 3`, `p(3) = 5`, `p(10) = 29`, and so on.
+
+Considering how much mystery and intrigue surrounds the primes, you might guess that this function wouldn't be computable, but it is. In plain English, the algorithm could :hook[look like this]{id="sqrt"}:
 
 ```
 is_prime(n):
-  # Check all possible divisors
   loop i from 2 to n - 1:
     if i divides n:
       return FALSE
@@ -173,7 +191,6 @@ is_prime(n):
 p(n):
   num_primes = 1
   x = 2
-  # Count how many primes we've passed
   while num_primes < n:
     x = x + 1
     if is_prime(x):
@@ -181,7 +198,7 @@ p(n):
   return x
 ```
 
-One might call this the "brute force" approach, but brute force is computable! The corresponding Turing machine for this pseudocode would be a beast, for sure, but it _can_ be constructed, which is all that matters.
+It may be a "brute force" approach, but brute force is computable! The corresponding Turing machine for this pseudocode would be a beast, for sure, but it _can_ be constructed, which is all that matters.
 
 Now that we have a sense of what a computable function is, what would it mean for a function to be _uncomputable_? Just to set your expectations, _most_ functions are uncomputable. There are a few especially notable examples, though. One has to do with the halting problem, which could be loosely stated like this:
 
@@ -195,13 +212,13 @@ Now that we have a sense of what a computable function is, what would it mean fo
 >
 > Is it possible to write a function `HALTS` that returns one value (say, `0`) if the Turing machine and input encoded by `N` runs forever, and a different value (say, `1`) if it eventually halts?
 
-In 1936, Alonzo Church and Alan Turing independently proved that it is _impossible_ to write an algorithm for `HALTS`. Which is a bummer, because this function would be the most godlike superpower for mathematicians and computer scientists. I mean, most (if not all?) great mathematical mysteries could be solved with this method: take the [Goldbach Conjecture](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture), which manages to come up in almost every one of my essays. The conjecture states that every even number greater than two can be expressed as the sum of two primes. There's currently no proof. But, if we had `HALTS`, then we could the following: Write a program that counts up and stops if it ever finds an even number that breaks the rule. Then, pass its code to `HALTS`. If `HALTS` returns `0`, then the conjecture is true, otherwise, it's false!
+In 1936, Alonzo Church and Alan Turing independently proved that it is _impossible_ to write an algorithm for `HALTS`. Which is a bummer, because this function would be the most godlike superpower for mathematicians and computer scientists. I mean, so many great mathematical mysteries could be solved with this method: take the [Goldbach Conjecture](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture), which manages to come up in almost every one of my essays. The conjecture states that every even number greater than two can be expressed as the sum of two primes. There's currently no proof. But, if we had `HALTS`, then we could do the following: Write a program that counts up and stops if it ever finds an even number that breaks the rule. Then, pass its code to `HALTS`. If `HALTS` returns `0`, then the conjecture is true, otherwise, it's false!
 
 ![Prometheus tries to steal the HALTS function](biggest-number/prometheus.png)
 
 ### Busy beavers strike again
 
-So, solving the halting problem is uncomputable, and as a result, anything that _depends_ on cracking the halting problem is also uncomputable. This brings me to the Busy Beaver problem, which I described in more detail in my previous essay on [unthinkable thoughts](https://worldsworstdetective.com/unthinkable-thoughts#chaos-in-the-patterns-in-the-chaos-in-the-patterns). To summarize quickly, we can define a function `BB(n)` that tells us the _longest_ number of steps that a Turing machine with that `n` :hook[states]{id="states"} can run (with no input) before eventually halting. By definition, Turing machines that run forever are disqualified, which is where the halting problem shows up.
+So, solving the halting problem is uncomputable, and as a result, anything that _depends_ on cracking the halting problem is also uncomputable. This brings me to the Busy Beaver problem, which I described in more detail in my previous essay on [unthinkable thoughts](https://worldsworstdetective.com/unthinkable-thoughts#chaos-in-the-patterns-in-the-chaos-in-the-patterns). To summarize quickly, we can define a function `BB(n)` that tells us the _longest_ number of steps that a Turing machine with `n` :hook[states]{id="states"} can run (with no input) before eventually halting. By definition, Turing machines that run forever are disqualified, which is where the halting problem shows up.
 
 Currently, we know the value of `BB(1)` through `BB(5)`. Although we can calculate `BB` for _specific_ input values, we _cannot_ write an algorithm that computes `BB(n)` in general, because that would violate the uncomputability of the halting problem.
 
@@ -239,7 +256,7 @@ First of all, starting with an ellipsis is such a baller move. "Gaping Yawn of E
 
 ![Detective rolling a boulder up a hill](biggest-number/boulder.png)
 
-Every fact I learn about Sbiis Saibian makes me even more curious about the kind of person he is. The most interesting tidbit I've discovered about Saibian are his [Decimice](https://sites.google.com/site/largenumbers/home/appendix/f). Saibian writes that, since childhood, he's had strong [color associations](https://en.wikipedia.org/wiki/Synesthesia) with different digits. Wanting to give each digit a distinct personality, he designed and drew ten anthropomorphic mice to represent each of the ten digits, giving each one a unique color theme and even a list of hobbies. He adds:
+Every fact I learn about Sbiis Saibian makes me even more curious about the kind of person he is. The most interesting tidbit I've discovered about Saibian is his [Decimice](https://sites.google.com/site/largenumbers/home/appendix/f). Saibian writes that, since childhood, he's had strong [color associations](https://en.wikipedia.org/wiki/Synesthesia) with different digits. Wanting to give each digit a distinct personality, he designed and drew ten anthropomorphic mice to represent each of the ten digits, giving each one a unique color theme and even a list of hobbies. He adds:
 
 > "One character in particular "Fourzi", representing the number 4, has become my avatar and kind of my unofficial "fursona" in the context of googology."
 
@@ -249,7 +266,7 @@ But even here, in the realm of colored-pencil-drawn numerological mice, Saibian 
 
 It may sound like I'm just making fun of Sbiis Saibian and his obsession with numbers. I will admit that his prose occasionally leans into a bombastic and/or angsty tone that makes it a little difficult to take seriously. But the truth is that, to an extent, I get it.
 
-In my 6th grade math class, there was a poster directly next to my desk with the first hundred digits of pi. When I zoned out in class, I would memorize a few digits– eventually, I'd memorized the whole thing. This lead me to read Wikipedia pages about pi and its relationship with prime numbers, which got me into number theory. In high school, I was reading about Russell's Paradox, Gödel's Incompleteness Theorem, and the Riemann Hypothesis. I didn't necessarily _understand_ all of it, but it all felt _important_ in a way I couldn't quite put into words.
+In my 6th grade math class, there was a poster directly next to my desk with the first hundred digits of pi. When I zoned out in class, I would memorize a few digits, and eventually I had the whole thing memorized. This lead me to read Wikipedia pages about pi and its relationship with prime numbers, which got me into number theory. In high school, I was reading about Russell's Paradox, Gödel's Incompleteness Theorem, and the Riemann Hypothesis. I didn't necessarily _understand_ all of it, but it all felt _important_ in a way I couldn't quite put into words.
 
 I distinctly remember a moment in college when I became hyper-aware of the fact that humans' unique ability to conceptualize numbers as an abstract thing enabled us to _describe the laws of physics_ and even _communicate at the speed of light_. In that moment, I felt a kind of existential terror. I looked around at everyday objects like lamps and laptops with a new sense of awe and disbelief. Somehow, the world kept turning.
 
@@ -259,7 +276,7 @@ And that's kind of the crux of this essay. The main reason I found Sbiis Saibian
 
 So... what are the practical implications of this? Sure, very big numbers are often useful, like the speed of light or the number of bits in a massive data warehouse. But once we start dealing with numbers like Graham's number, whose size absolutely dwarfs the scale of the universe, what's the point?
 
-Some philosophers have taken this viewpoint to the extreme: to [ultrafinitists](https://en.wikipedia.org/wiki/Ultrafinitism), if something (e.g. a number) can't be _actually_ constructed, then we're not justified in saying it exists. Since it doesn't seem possible to ever have Graham's number of _anything_, an ultrafinitist would argue that the number itself hasn't actually been "found" or "discovered". It's just as nonexistent as unicorns. Their argument stems from the somewhat circular definition of numbers in classical mathematics: at the lowest level, a number is the repeated application of the "successor" function `S`, so e.g. `3 = S(S(S(0)))`. But for numbers like Graham's number, you'd just say "There's Graham's number of `S`s". Ultrafinitists aren't a big fan of that circularity.
+Some philosophers have taken this viewpoint to the extreme: to [ultrafinitists](https://en.wikipedia.org/wiki/Ultrafinitism), if something (e.g. a number) can't be _actually_ constructed, then we're not justified in saying it exists. Since it doesn't seem possible to ever have Graham's number of _anything_, an ultrafinitist would argue that the number itself hasn't actually been "found" or "discovered". It's just as nonexistent as unicorns. Ultrafinitism takes issue with the circular definition of numbers in classical mathematics: at the lowest level, a number is the repeated application of adding one, so e.g. `3 = 1+1+1`. But for numbers like Graham's number, you'd just say "Trust me, there's Graham's number of `+1`s". Ultrafinitists aren't a big fan of that circularity.
 
 Pedantic? Maybe. But it illustrates the point that the physical, actual, as-it-relates-to-humans usefulness of numbers like Graham's number (or any of the unimaginably larger numbers googologists have cooked up) seems like basically zero.
 
@@ -267,13 +284,13 @@ Furthermore, we know that there's no pot of gold at the end of the rainbow, so t
 
 ## How could you not care?
 
-First, I'd like to refute the idea that googology is pointless because there's very limited practical value. As Sbiis Saibian himself stated, googology is a _craft_. It's an art, it's a challenge. When George Mallory was asked why he wanted to climb Mount Everest, he reportedly said, "Because it's there." Well, googologists seek out bigger numbers because they're _there_, and there's nothing more human than that.
+First, I'd like to refute the idea that "googology is pointless because there's very limited practical value". As Sbiis Saibian himself stated, googology is a _craft_. It's an art, it's a challenge. When George Mallory was asked why he wanted to climb Mount Everest, he reportedly said, "Because it's there." Well, googologists seek out bigger numbers because they're _there_. What's more human than that?
 
 > "People ask me, 'What is the use of climbing Mount Everest?' and my answer must at once be, 'It is of no use. There is not the slightest prospect of any gain whatsoever. Oh, we may learn a little about the behaviour of the human body at high altitudes, and possibly medical men may turn our observation to some account for the purposes of aviation. But otherwise nothing will come of it. We shall not bring back a single bit of gold or silver, not a gem, nor any coal or iron... What we get from this adventure is just sheer joy. And joy is, after all, the end of life. We do not live to eat and make money. We eat and make money to be able to live. That is what life means and what life is for."
 >
 > – George Mallory
 
-Thanks, George. Also, saying that the study of large numbers is useless because we'll probably never use the numbers themselves is kind of like arguing that _school_ is useless because no one remembers what year the French Revolution started, or what the Golgi apparatus does, or what a covalent bond is. Just like school teaches kids how to self-organize and handle social situations (among other things), there's value in the _method_ that googologists use to define larger numbers.
+Well put, George. Also, saying that the study of large numbers is useless because we'll probably never use the numbers themselves is kind of like arguing that _school_ is useless because no one remembers what year the French Revolution started, or what the Golgi apparatus does, or what a covalent bond is. Just like school teaches kids how to self-organize and handle social situations (among other things), there's value in the _method_ that googologists use to define larger numbers.
 
 ### The abstraction dojo
 
@@ -289,13 +306,13 @@ One of my favorite examples of this principle is the work of Claude Shannon, who
 
 Today, we're seeing computer scientists attempt to generalize _thought itself_ as a massive, immensely complex function. If such a thing were truly possible, would that mean that we generalized our own _ability_ to generalize? What does that even mean for human intelligence? It's all very [Gödel-y](https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach).
 
-In other words, humans have used abstractions like numbers and information theory to harness that laws of reality and propel ourselves into the next technological age. But in the face of all of that technological progress, I think there's something deeply artistic about discovering higher abstractions just for the sake of _doing_ it, despite the Sisyphean nature of the task. In my mind, googologists are like martial arts masters, honing their craft in the art of self defense without the threat of imminent battle. Beyond the realm of practical value, I salute the googologists building their towers in the sky...
+In other words, humans have used abstractions like numbers and information theory to harness the laws of reality and propel ourselves into the next technological age. But in the face of all of that technological progress, I think there's something deeply artistic about discovering higher abstractions just for the sake of _doing_ it, despite the Sisyphean nature of the task. In my mind, googologists are like martial arts masters, honing their craft in the art of self defense without expecting a fight. Beyond the realm of practical value, I salute the googologists building their towers in the sky. Damn, now I'm starting to sound like Sbiis.
 
 ## So... what's the biggest number?
 
 Probably [ten](https://www.youtube.com/watch?v=SMKnskpPYeo). ■
 
-:footnote[I _was_ actually planning on going on, specifically to talk about the [Fast-growing hierarchy](https://en.wikipedia.org/wiki/Fast-growing_hierarchy), but as I was trying to understand what the heck it is, I realized that I was slightly out of my league and would need to spend a lot more time understanding it before I could try to explain it. I'll leave it here for reference, though, in case you're braver than I am.]{id="hierarchy"}
+:footnote[I _was_ actually planning to going on, specifically to talk about the [Fast-growing hierarchy](https://en.wikipedia.org/wiki/Fast-growing_hierarchy). But, as I was trying to understand what the heck it is, I realized I was slightly out of my league and would need to spend a lot more time understanding it before I could try explaining it. I'll leave it here for reference, though, in case you're braver than I am.]{id="hierarchy"}
 :footnote[Yes, I know we could optimize this by only iterating up to `sqrt(n)`, but the point is only that it's _possible_, not necessarily _efficient_.]{id="sqrt"}
 :footnote[Informally, the number of states can be thought of as a measure of how "complex" the Turing machine's "code" is.]{id="states"}
 :footnote[That's not a joke. I decided that the album cover would be an actual cube with the digits of pi written on it. I honestly, truly, legitimately thought that would be cool. Thank god we don't stay 12 forever.]{id="album"}
