@@ -1,3 +1,5 @@
+![A detective figure walking through a landscape labeled by numbers](biggest-number/biggest-number-header.png)
+
 # No dumb questions: What's the biggest number?
 
 Today we'll address a burning question that has occupied the minds of children and adults since the dawn of mathematics: What is the biggest number?
@@ -42,9 +44,11 @@ In other words, finite numbers are nice and simple (relatively speaking). Plus, 
 
 ## The start of our journey
 
+![Square one](biggest-number/sq-one.png)
+
 If you've ever seen a movie where an ambitious protagonist wants to become the greatest {karate master, jedi, boxer}, you know that you don't get a training montage until you go back to basics. So, let's revisit the fundamentals.
 
-We'll head back to square one and consider the number `1`. We can add 1 to that and get `1+1`, which represents a bigger number (namely, `2`). Add another one and we get `1+1+1`, or `3`. We could keep adding one forever, which clues us into the fact that we can _generalize_ this process. Instead of adding five ones, or ten ones, or a hundred ones, we can summarize the _act_ of summing _any number_ of ones together. Without any further ado, I'm pleased to present you with our first "fast"-growing function:
+Consider the number `1`. We can add 1 to that and get `1+1`, which represents a bigger number (namely, `2`). Add another one and we get `1+1+1`, or `3`. We could keep adding one forever, which clues us into the fact that we can _generalize_ this process. Instead of adding five ones, or ten ones, or a hundred ones, we can summarize the _act_ of summing _any number_ of ones together. Without any further ado, I'm pleased to present you with our first "fast"-growing function:
 
 ```
 f(n) = n
@@ -85,6 +89,8 @@ That's a one followed by two hundred zeroes. There's a popular number out there 
 
 ## Repeated exponentiation (Knuth's up-arrows)
 
+![A stack of exponents](biggest-number/power-stack.png)
+
 But will we stop there? Absolutely not. In the grand scheme of things, what's two hundred zeroes? It's nothing. We notice that we only raised `n` to the power of itself once. Why not raise `n` to the power of `n`, and then raise `n` to _that_ power? Or how about a stack of 4 `n`s? Or 5? Once again, the TSMfMFGF rears its head.
 
 Computer pioneer and TeX inventor [Donald E. Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) saw what was going on here, and in the '70s he came up with a new notation to generalize all of this generalization. It's called "[up-arrow notation](https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation)", and it's pretty powerful. Here's how it works:
@@ -97,7 +103,7 @@ Two arrows (`↑↑`) means repeated _exponentiation_. So, `2↑↑3` would repr
 2↑↑(2↑↑2) = 2↑↑(2^2) = 2↑↑4 = 2^(2^(2^2)) = 2^16 = 65,536
 ```
 
-I intentionally picked small numbers so that the results are manageable, but these examples don't give a sense of how _insanely powerful_ the up-arrow notation is for expressing big numbers. Let's define `j(n) = n↑↑n` and consider `j(10)`. This would correspond to an exponent stack, ten `10`s tall. It's hard to even find a way to _describe_ how big that number is. We could say it's a one followed by `10↑↑9` zeroes, but that's not very helpful. We could alternatively take a stab at the top part of the stack: `10↑↑4` is a one followed by a googol zeroes. But there's little point trying to put the _whole_ number into perspective, because it's so much bigger that than we could ever fathom. And that's just with _two arrows_. What if we had used three? Or four? Or five? Wait a second...
+I intentionally picked small numbers so that the results are manageable, but these examples don't give a sense of how _insanely powerful_ the up-arrow notation is for expressing big numbers. Let's define `j(n) = n↑↑n` and consider `j(10)`. This would correspond to an exponent stack, ten `10`s tall. It's hard to even find a way to _describe_ how big that number is. We could say it's a one followed by `10↑↑9` zeroes, but that's not very helpful. We could alternatively take a stab at the top part of the stack: `10↑↑4` is a one followed by a hundred million googol zeroes. If you think you can picture, that, you can't. There's little point trying to put the _whole_ number into perspective, because it's so much bigger that than we could ever fathom. And that's just with _two arrows_. What if we had used three? Or four? Or five? Wait a second...
 
 Just when we thought we had generalized the whole thing, from repeated multiplication to repeated exponentiation to repeated _repeated_ exponentiation, and so on, Step 1 of the TSMfMFGF pops up again!
 
@@ -174,6 +180,8 @@ Now that we have a sense of what a computable function is, what would it mean fo
 
 In 1936, Alonzo Church and Alan Turing independently proved that it is _impossible_ to write an algorithm for `HALTS`. Intuitively, this function would be way too powerful. I mean, there's so many unsolved mathematical problems that could be solved with this function. For example, there's the Goldbach conjecture, which asks whether there exists an even number that _can't_ be expressed as the sum of two primes. If we had `HALTS`, then we could write a computer program that iterates through all natural numbers and stops if it ever finds such a number. Then, we just pass its code through `HALTS` and just like that, you'd (dis)prove the Goldbach conjecture!
 
+![Prometheus tries to steal the HALTS function](biggest-number/prometheus.png)
+
 ### Busy beavers strike again
 
 So, solving the halting problem is uncomputable, and as a result, anything that depends on cracking the halting problem is also uncomputable. This brings me to the Busy Beaver problem. I'd end up repeating myself from the last essay if I described the problem in depth, so [check that out](https://worldsworstdetective.com/unthinkable-thoughts#chaos-in-the-patterns-in-the-chaos-in-the-patterns) for more details. To summarize quickly, we can define a function `BB(n)` that tells us the _longest_ number of steps that a Turing machine with that `n` :hook[states]{id="states"} can run before eventually halting. By definition, Turing machines that run forever are disqualified, which is where the halting problem shows up.
@@ -212,6 +220,8 @@ I was completely fascinated by this anonymous individual and his seemingly unbou
 
 First of all, starting with an ellipsis is such a baller move. "Gaping Yawn of Eternity" sounds like the name of an album I would have come up with in middle school, back when I thought "Pi Cubed" would make for an :hook[epic album name]{id="album"}. I have this picture of Saibian crafting massive number after massive number, feeling the burden of humanity on his shoulders as he tames the unspeakable horrors that lie beyond our meager world of billions and trillions.
 
+![Detective rolling a boulder up a hill](biggest-number/boulder.png)
+
 In fact, every fact I learn about Sbiis Saibian makes me even more curious about the kind of rare person he is. By far and away, the most interesting thing I've discovered about Saibian are his [Decimice](https://sites.google.com/site/largenumbers/home/appendix/f). Saibian writes that, since childhood, he's had strong [color associations](https://en.wikipedia.org/wiki/Synesthesia) with different digits. For fun (I assume), he designed and drew ten anthropomorphic mice to represent each of the ten digits, giving each one a unique color theme and even a list of hobbies. He adds:
 
 > "One character in particular "Fourzi", representing the number 4, has become my avatar and kind of my unofficial "fursona" in the context of googology."
@@ -228,11 +238,7 @@ I distinctly remember a moment in college when I became hyper-aware of the fact 
 
 This brings me to the crux of this essay. The main reason I found Sbiis Saibian (and the entire subject of googology) so fascinating is that it sits squarely at the intersection of two powerful reactions: "Who cares?" and "How could you not care?"
 
-## Who cares? / How could you not care?
-
-To wrap up this exploration into the realm of big numbers, I want to address two polar opposite reactions to the whole discussion. I don't think either angle is the whole story; there's a seed of truth to both of them.
-
-### Who cares?
+## Who cares?
 
 So... what are the practical implications of this? Sure, very big numbers are often useful, like the speed of light or the number of bits in a massive data warehouse. But once we start dealing with numbers like Graham's number, whose size absolutely dwarfs the scale of the universe, what's the point?
 
@@ -242,7 +248,7 @@ Pedantic? Maybe. But it illustrates the point that the physical, actual, as-it-r
 
 Furthermore, we know that there's no pot of gold at the end of the rainbow, so to speak. Above every fast-growing function is another, equally pointless faster-growing function, and above _that_ is an infinite number of uncomputable functions that will never be described. So who cares?
 
-### How could you not care?
+## How could you not care?
 
 First, I'd like to refute the idea that googology is pointless because there's very limited practical value. As Sbiis Saibian himself stated, googology is a _craft_. It's an art, it's a challenge. When George Mallory was asked why he wanted to climb Mount Everest, he reportedly said, "Because it's there." Googologists seek out bigger numbers because they're _there_, and there nothing more human than that. Mallory himself puts that sentiment beautifully:
 
@@ -254,7 +260,9 @@ Thanks, George.
 
 Secondly, saying that the study of large numbers is useless because we'll probably never use the numbers themselves is kind of like arguing that _school_ is useless because no one remembers what year the French Revolution started, or what the Golgi apparatus does, or what a covalent bond is. Just like school teaches kids how to self-organize and handle social situations (among other things), there's value in the _method_ that googologists use to define larger numbers.
 
-#### The abstraction dojo
+### The abstraction dojo
+
+![A physical pendulum being abstracted to an ideal pendulum being abstracted to a formula](biggest-number/abstraction.png)
 
 To me, googology is like a dojo where one's capacity for _abstraction_ is pushed to its limits. I very quickly ran into my _own_ limits for abstraction when trying to intuitively understand Conway's chained arrow notation for chains of four or more arrows. The definition itself was simple enough, and I was able to work through a few examples with four arrows. But I still wasn't able to :hook[grok]{id="grok"} it; I didn't fully see what the chained arrows were supposed to _represent_ in the same way that I deeply understand what addition, multiplication, and exponentiation represent.
 
