@@ -36,7 +36,6 @@ export const POSTS: PostData[] = [
     datePublished: makeDateLocalTime(2025, 3, 1),
     description:
       "Every child has wondered the answer this question. Is it a million? A billion? Infinity? Infinity plus one?",
-    hide: true,
   },
 ];
 
