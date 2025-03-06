@@ -1,0 +1,67 @@
+.subscribePageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.messageAndFormContainer {
+  width: min(90%, 700px);
+  font-size: 18px;
+}
+
+.subscribeHeader {
+  font-size: 2.25em;
+}
+
+.formContainer {
+  margin-top: 20px;
+}
+
+.horizontalInputContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.emailInputContainer {
+  display: inline-block;
+  flex-grow: 1;
+}
+
+.emailInput {
+  font-size: initial;
+  padding: 2px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: 1px solid rgb(110, 110, 110);
+  width: calc(100% - 10px);
+}
+
+.emailInput:focus {
+  outline: 2px solid rgb(250, 171, 23);
+  border: none;
+}
+
+.submitContainer {
+  display: inline-block;
+  flex-shrink: 1;
+}
+
+.submitButton {
+  height: 100%;
+  font-size: initial;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.submitButton:disabled {
+  background-color: gray;
+  cursor: initial;
+}

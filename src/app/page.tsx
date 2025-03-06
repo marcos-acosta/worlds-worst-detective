@@ -5,6 +5,7 @@ import { POSTS, sortPosts } from "@/posts";
 import Image from "next/image";
 import { monospaceFont, titleFont } from "@/fonts";
 import rssImage from "./../../public/images/rss.png";
+import emailImage from "./../../public/images/email-v2.png";
 import detectiveImage from "./../../public/images/detective.png";
 
 export default function Homepage() {
@@ -19,6 +20,16 @@ export default function Homepage() {
                 alt="The RSS symbol"
                 width={25}
                 height={25}
+                title="RSS feed"
+              />
+            </Link>
+            <Link href="/sub">
+              <Image
+                src={emailImage}
+                alt="The e-mail symbol"
+                width={25}
+                height={25}
+                title="Subscribe to emails"
               />
             </Link>
           </div>
