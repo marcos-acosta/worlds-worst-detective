@@ -5,6 +5,7 @@ import styles from "./subscribePage.module.css";
 import { combineClasses } from "@/util";
 import { monospaceFont } from "@/fonts";
 import SimplePage from "@/rendering/simplePage";
+import mailImage from "./../../../public/images/envelope.png";
 
 const validateEmailRegex = /^\S+@\S+\.\S+$/;
 
@@ -67,5 +68,13 @@ export default function SubscribePage() {
     </div>
   );
 
-  return <SimplePage title={headerText} body={body} rest={signupForm} />;
+  return (
+    <SimplePage
+      title={headerText}
+      body={body}
+      rest={signupForm}
+      image={mailImage}
+      alt="Detective holding a manila envelope"
+    />
+  );
 }
