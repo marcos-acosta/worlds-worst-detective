@@ -15,7 +15,7 @@ import { useSearchParams } from "next/navigation";
 import { titleFont } from "@/fonts";
 import notFoundImage from "./../../../public/images/not-found.png";
 import detectiveImage from "./../../../public/images/detective.png";
-import { POSTS } from "@/posts";
+import { PostData, POSTS } from "@/posts";
 import SimplePage from "@/rendering/simplePage";
 
 export default function Article() {
@@ -30,21 +30,33 @@ export default function Article() {
 
   useEffect(() => {
     async function fetchPosts() {
-      if (!POSTS.find((post) => post.url === params.slug)) {
+      const post: PostData | undefined = POSTS.find(
+        (post) => post.url === params.slug
+      );
+      if (!post) {
         setError(true);
         return;
       }
-      const res = await fetch(`${SITE_URL}api/${params.slug}`);
+      const res = await fetch(
+        `${SITE_URL}api/${post.draft ? "draft/" : ""}${params.slug}`
+      );
       if (!res.ok) {
         setError(true);
         return;
       }
       const data = await res.json();
-      const tree = fromMarkdown(data.contents, {
-        extensions: [directive()],
-        mdastExtensions: [directiveFromMarkdown()],
-      });
-      setContent(tree);
+      if (post.draft) {
+        // Convert text to AST object
+        const tree = fromMarkdown(data.contents, {
+          extensions: [directive()],
+          mdastExtensions: [directiveFromMarkdown()],
+        });
+        console.log(tree);
+        setContent(tree);
+      } else {
+        // Response is already an AST object
+        setContent(data.contents);
+      }
     }
     fetchPosts();
   }, [params.slug]);

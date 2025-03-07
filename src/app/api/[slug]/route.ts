@@ -1,17 +1,25 @@
-import { promises as fs } from "fs";
-import path from "path";
+import biggestNumber from "@/data/json/biggest-number";
+import doomscrolling from "@/data/json/doomscrolling";
+import formalSystems from "@/data/json/formal-systems";
+import unthinkableThoughts from "@/data/json/unthinkable-thoughts";
+import { Parent } from "mdast";
+
+const JSON_DATA: { [k: string]: Parent } = {
+  "biggest-number": biggestNumber,
+  doomscrolling: doomscrolling,
+  "formal-systems": formalSystems,
+  "unthinkable-thoughts": unthinkableThoughts,
+};
 
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const filePath = path.join(
-    process.cwd(),
-    "src",
-    "data",
-    "md",
-    `${(await params).slug}.md`
-  );
-  const content = await fs.readFile(filePath, "utf8");
-  return Response.json({ contents: content });
+  const slug = (await params).slug;
+  if (slug in JSON_DATA) {
+    const content = JSON_DATA[slug];
+    return Response.json({ contents: content });
+  } else {
+    return Response.error();
+  }
 }

@@ -6,6 +6,7 @@ export interface PostData {
   datePublished: Date;
   description: string;
   hide?: boolean;
+  draft?: boolean;
 }
 
 export const POSTS: PostData[] = [
