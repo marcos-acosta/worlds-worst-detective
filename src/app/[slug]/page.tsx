@@ -13,20 +13,32 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { titleFont } from "@/fonts";
+import notFoundImage from "./../../../public/images/not-found.png";
 import detectiveImage from "./../../../public/images/detective.png";
+import { POSTS } from "@/posts";
+import SimplePage from "@/rendering/simplePage";
 
 export default function Article() {
   const [content, setContent] = useState(null as Node | null);
+  const [error, setError] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [scrollingUp, setScrollingUp] = useState(true);
   const [annotationId, setAnnotationId] = useState(null as string | null);
   const [loaded, setLoaded] = useState(false);
-  const paramsNew = useParams();
+  const params = useParams();
   const searchParams = useSearchParams();
 
   useEffect(() => {
     async function fetchPosts() {
-      const res = await fetch(`${SITE_URL}api/${paramsNew.slug}`);
+      if (!POSTS.find((post) => post.url === params.slug)) {
+        setError(true);
+        return;
+      }
+      const res = await fetch(`${SITE_URL}api/${params.slug}`);
+      if (!res.ok) {
+        setError(true);
+        return;
+      }
       const data = await res.json();
       const tree = fromMarkdown(data.contents, {
         extensions: [directive()],
@@ -35,7 +47,7 @@ export default function Article() {
       setContent(tree);
     }
     fetchPosts();
-  }, [paramsNew.slug]);
+  }, [params.slug]);
 
   const updateScrollDirection = useCallback(() => {
     setScrollY(window.scrollY);
@@ -115,6 +127,18 @@ export default function Article() {
         </div>
       </div>
     </div>
+  ) : error ? (
+    <SimplePage
+      title="I can't find that article."
+      body={
+        <>
+          Either that URL doesn&apos;t exist, or there was some issue fetching
+          the content from the backend.
+        </>
+      }
+      image={notFoundImage}
+      alt="Detective holding a magnifying glass"
+    />
   ) : (
     <></>
   );

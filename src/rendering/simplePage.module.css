@@ -18,3 +18,9 @@
 .backToHome {
   margin-bottom: 15px;
 }
+
+.imageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
