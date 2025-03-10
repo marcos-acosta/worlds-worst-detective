@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { bodyFont } from "@/fonts";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "World's Worst Detective",
@@ -18,6 +19,7 @@ export default function RootLayout({
         name="apple-mobile-web-app-title"
         content="World's Words Detective"
       />
+      <GoogleAnalytics gaId={"G-GJ3RE93YVH"} />
       <body className={bodyFont.className}>{children}</body>
     </html>
   );
