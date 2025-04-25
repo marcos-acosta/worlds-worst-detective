@@ -1,6 +1,6 @@
 {
-  "name": "World's Worst Detective",
-  "short_name": "WWD",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
